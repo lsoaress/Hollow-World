@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+*{
+    z-index: 999;
+    font-family: 'Poppins', sans-serif;;
+}
+
+#myvideo {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1 !important;
+}
+
+#container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#div_logo{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+#container_selecao{
+    height: 35%;
+    background-color: #2525257d;
+    width: 15%;
+    margin-top: 10%;
+    border: 3px solid #a0a0a0;
+    border-radius: 12px;
+    font-size: 1.6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.txt_selecao{
+    color: #fceeee;
+    text-align: center;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    border-bottom: 2px solid #ec9c47;
+    transition: 1s;
+    margin-left: 12%;
+}
+
+.txt_selecao:hover{
+    transition: 1s;
+    text-shadow: 0 0 10px #ec9c47, 0 0 20px #ec9c47, 0 0 30px #ec9c47, 0 0 40px #ec9c47, 0 0 50px #ec9c47, 0 0 60px #ec9c47, 0 0 70px #ec9c47;
+
+}
+
+.txt_selecao:hover ~ .arrow_d{
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.div_tripla{
+    display: flex;
+}
+
+.arrow_d{
+    margin: 13% 0 0 10%;
+    width: 23px;
+    height: 23px;
+    transition: 0.5s;
+    transform: rotate3d(5, 2, 0, 180deg);
+    opacity: 0;
+}

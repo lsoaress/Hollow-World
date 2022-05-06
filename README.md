@@ -1,0 +1,2 @@
+# sptech
+Projeto individual sptech

@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="js/main.js"></script>
+    <title>Home</title>
 </head>
 
 <body>
     <video muted loop autoplay id="myvideo">
         <source src="video/menu2.mp4" type="video/mp4">
     </video>
-    <div id="container">
+    <div id="container_main">
         <div id="div_logo">
             <img src="img/logo.png" id="txt_logo">
         </div>
         <div id="container_selecao">
-            <div class="div_tripla">
+            <div id="sel_1" class="div_dupla">
                 <div id="teste" class="txt_selecao">Visitar</div>
                 <img src="img/selector.png" class="arrow_d">
             </div>
-            <div class="div_tripla">
-                <div class="txt_selecao">Entrar</div>
+            <div id="sel_2" class="div_dupla">
+                <div class="txt_selecao" onclick="call_login()">Entrar</div>
                 <img src="img/selector.png" class="arrow_d">
+            </div>
+
+            <div id="container_login">
+                <form id="form_login">
+                    <span style="font-size: 1em">Bem vindo ao 'Projeto'!</span>
+                    <input id="inp_email" placeholder="Email">
+                    <input type="password" placeholder="Senha">
+                    <button type="button">Entrar</button>
+                    <span>Ainda não possui cadastro? Clique Aqui</span>
+                </form>
             </div>
         </div>
     </div>

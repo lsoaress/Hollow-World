@@ -108,36 +108,86 @@ input{
     border-style: none;
     color: #f2f2f2;
     background-color: #25252500;
-    border-bottom: #ff9b0c 2px outset;
+    border-bottom: #ff9a0c 2px outset;
     font-weight: bold;
     font-size: 15px;
     outline: 0;
 }
 
 input::placeholder{
-    color: #f2f2f2;
+    color: #f2f2f27e;
 }
 
 #form_login span{
-    font-size: 0.5em ;
+    font-size: 12.8px ;
     color: #f2f2f2;
     text-align: center;
 }
 
-#form_login button{
+#form_login button, #form_cadastro button{
     transition: 0.5s;
     color: #252525;
     background-color: #ec9c47;
     border: none;
     border-radius: 12px;
     width: 33%;
-    height: 7%;
+    height: 8%;
+    font-size: 0.7em;
     font-weight: bold;
     cursor: pointer;
 }
 
-#form_login button:hover{
-    box-shadow: #25262777 3px 3px 6px 0px inset, #25262777 -3px -3px 6px 1px inset;
+#form_login button:hover, #form_cadastro button:hover{
+    box-shadow: 0 12px 16px 0 #e6e5e53d, 0 17px 50px 0 #e6e5e53d;
 }
 
+#form_login img{
+    transition: 1s;
+    cursor: pointer;
+    height: 15%;
+    margin: -10% 0 -11% 0;
+}
 
+#form_login img:hover{
+    transition: 1s;
+    filter: drop-shadow(0 0 0.75rem #ec9c47);
+}
+
+#divisao_cad{
+    display: none;
+    width: 1px;
+    height: 90%;
+    background-color: #ec9c47;
+}
+
+.span_call_cadastro{
+    transition: 0.5s;
+    color: #09c5cb !important;
+    cursor: pointer;
+}
+
+.span_call_cadastro:hover{
+    color: #e46975 !important;
+    transition: 0.5s;
+}
+
+#container_cadastro{
+    display: none;
+    width: 56%;
+    height: 100%;
+}
+
+#form_cadastro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#form_cadastro div{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}

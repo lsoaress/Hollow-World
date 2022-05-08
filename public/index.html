@@ -21,11 +21,11 @@
         </div>
         <div id="container_selecao">
             <div id="sel_1" class="div_dupla">
-                <div id="teste" class="txt_selecao">Visitar</div>
+                <div class="txt_selecao" onclick="call_login()">Entrar</div>
                 <img src="img/selector.png" class="arrow_d">
             </div>
             <div id="sel_2" class="div_dupla">
-                <div class="txt_selecao" onclick="call_login()">Entrar</div>
+                <div class="txt_selecao">Visitar</div>
                 <img src="img/selector.png" class="arrow_d">
             </div>
 
@@ -35,7 +35,31 @@
                     <input id="inp_email" placeholder="Email">
                     <input type="password" placeholder="Senha">
                     <button type="button">Entrar</button>
-                    <span>Ainda não possui cadastro? Clique Aqui</span>
+                    <span id="sem_login">Sem Login? <span onclick="call_cadastro()" class="span_call_cadastro">Venha fazer parte da
+                            nossa comunidade!</span></span>
+                    <img onclick="back_home()" src="img/arrow_back.png">
+                </form>
+            </div>
+
+            <div id="divisao_cad"></div>
+
+            <div id="container_cadastro">
+                <form id="form_cadastro">
+                    <span style="font-size: 1em; color: #f2f2f2;">Faça parte da nossa comunidade!</span>
+                    <div>
+                        <input placeholder="Nome" id="inp_cad_nome">
+                        <input placeholder="Email" id="inp_cad_email">
+                    </div>
+                    <div>
+                        <input placeholder="Estado" id="inp_cad_estado">
+                        <input placeholder="Cep" id="inp_cad_cep">
+                    </div>
+                    <div>
+                        <input placeholder="Senha" id="inp_cad_senha">
+                        <input placeholder="Confirme sua Senha" id="inp_confirmacao">
+                    </div>
+                    <input placeholder="Nickname" id="inp_cad_nick">
+                        <button type="button" onclick="cadastrar()">Cadastrar</button>
                 </form>
             </div>
         </div>

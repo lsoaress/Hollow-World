@@ -22,11 +22,11 @@
         <div id="container_selecao">
             <div id="sel_1" class="div_dupla">
                 <div class="txt_selecao" onclick="call_login()">Entrar</div>
-                <img src="img/selector.png" class="arrow_d">
+                <img src="img/selector.png" class="arrow_d" id="arrow1">
             </div>
             <div id="sel_2" class="div_dupla">
                 <div class="txt_selecao">Visitar</div>
-                <img src="img/selector.png" class="arrow_d">
+                <img src="img/selector.png" class="arrow_d" id="arrow2">
             </div>
 
             <div id="container_login">
@@ -35,7 +35,8 @@
                     <input id="inp_email" placeholder="Email">
                     <input type="password" placeholder="Senha">
                     <button type="button">Entrar</button>
-                    <span id="sem_login">Sem Login? <span onclick="call_cadastro()" class="span_call_cadastro">Venha fazer parte da
+                    <span id="sem_login">Sem Login? <span onclick="call_cadastro()" class="span_call_cadastro">Venha
+                            fazer parte da
                             nossa comunidade!</span></span>
                     <img onclick="back_home()" src="img/arrow_back.png">
                 </form>
@@ -51,15 +52,16 @@
                         <input placeholder="Email" id="inp_cad_email">
                     </div>
                     <div>
-                        <input placeholder="Estado" id="inp_cad_estado">
-                        <input placeholder="Cep" id="inp_cad_cep">
+                        <input placeholder="Cep" id="inp_cad_cep" maxlength="9" onchange="viacep()"
+                            onkeyup="mascara_cep()" onkeydown="mascara_cep_volta()">
+                        <input placeholder="Estado" id="inp_cad_estado" maxlength="2">
                     </div>
                     <div>
                         <input placeholder="Senha" id="inp_cad_senha">
                         <input placeholder="Confirme sua Senha" id="inp_confirmacao">
                     </div>
-                    <input placeholder="Nickname" id="inp_cad_nick">
-                        <button type="button" onclick="cadastrar()">Cadastrar</button>
+                    <input placeholder="Username" id="inp_cad_user">
+                    <button type="button" onclick="cadastrar()">Cadastrar</button>
                 </form>
             </div>
         </div>
@@ -67,3 +69,44 @@
 </body>
 
 </html>
+
+<script>
+    function viacep() {
+
+        fetch(`https://viacep.com.br/ws/${inp_cad_cep.value}/json/`, {
+            method: "GET",
+            mode: "cors"
+        }).then(function (resposta) {
+            console.log(resposta)
+            resposta.json().then(function (data) {
+                console.log(data)
+                inp_cad_estado.value = data.uf;
+            })
+
+        }).catch(function (erro) {
+            console.log(erro)
+        })
+    }
+
+    function mascara_cep() {
+        let cep = inp_cad_cep.value;
+        if(event.keyCode != 8){
+            if (cep.length == 5) {
+                inp_cad_cep.value += '-'
+            }
+        }
+        /* else{
+            if()
+        } */
+    }
+
+    function mascara_cep_volta(){
+        let cep = inp_cad_cep.value;
+
+        if(cep.length == 5){
+            if(event.keyCode != 8){
+                inp_cad_cep.value += '-'
+            }
+        }
+    }
+</script>

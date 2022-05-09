@@ -94,12 +94,6 @@ function call_cadastro() {
 }
 
 function verificar_cadastro() {
-
-}
-
-var valido = false;
-
-function cadastrar() {
     var nome = inp_cad_nome.value;
     var email = inp_cad_email.value;
     var estado = inp_cad_estado.value;
@@ -108,55 +102,198 @@ function cadastrar() {
     var confirmacao = inp_confirmacao.value;
     var user = inp_cad_user.value;
 
-    
+    var certo_n = certo_nome.style.opacity;
+    var certo_e = certo_email.style.opacity;
+    var certo_es = certo_estado.style.opacity;
+    var certo_c = certo_cep.style.opacity;
+    var certo_s = certo_senha.style.opacity;
+    var certo_sc = certo_senhac.style.opacity;
+    var certo_u = certo_user.style.opacity;
+
+    if(certo_n == 1 && certo_e == 1 && certo_es == 1 && certo_c == 1 && certo_s == 1 && certo_sc == 1 && certo_u == 1){
+        alert('tudo certo patrão')
+    }
+
     if (nome.trim() == '' || email.trim() == '' || estado.trim() == '' || cep.trim() == '' || senha.trim() == '' || confirmacao.trim() == '' || user.trim() == '') {
         alert('Preencha todos os campos!')
     }
+}
+
+function cadastrar() {
+    
+}
+
+function validar_email() {
+    var email = inp_cad_email.value;
+
+    if (email.length < 6) {
+        /* alert('Email muito curto'); */
+
+        certo_email.style.transition = 'opacity 0.5s ease';
+        certo_email.style.opacity = 0;
+
+        errado_email.style.transition = 'opacity 0.5s ease';
+        errado_email.style.opacity = 1;
+    }
+
+    else if (email.indexOf('@') < 0) {
+        /* alert('Faltando @ no seu email'); */
+
+        certo_email.style.transition = 'opacity 0.5s ease';
+        certo_email.style.opacity = 0;
+
+        errado_email.style.transition = 'opacity 0.5s ease';
+        errado_email.style.opacity = 1;
+    }
+
+    else if (email.startsWith('@') || email.endsWith('@')) {
+        /* alert('email não pode começar ou terminar com @'); */
+
+        certo_email.style.transition = 'opacity 0.5s ease';
+        certo_email.style.opacity = 0;
+
+        errado_email.style.transition = 'opacity 0.5s ease';
+        errado_email.style.opacity = 1;
+    }
+
     else {
-        let interval = /^[^a-zA-ZãÃâÂáÁõÕóÓíÍéÉúÚ ]+$/;
-        let estado_interval = /^[^a-zA-Z]+$/
-        
-        
-        if (nome.length < 3) {
-            alert('insira um nome com pelo menos 3 letras');
-            valido = false;
-        }
-        else{
-            for (let c = 0; c < nome.length; c++) {
-                if (nome[c].match(interval)) {
-                    alert('Insira um nome com caracteres válidos')
-                    c = nome.length;
-                }
-            }
-            
-            if (email.length < 6) {
-                alert('Faltando @ no seu email')
-            }
-            
-            else if (email.indexOf('@') < 0) {
-                alert('Faltando @ no seu email')
-            }
+        errado_email.style.transition = 'opacity 0.5s ease';
+        errado_email.style.opacity = 0;
 
-            else if (email.startsWith('@') || email.endsWith('@')) {
-                alert('email não pode começar ou terminar com @')
-            }
-
-            else if(estado.match(estado_interval)){
-                alert('Utilize somente letras no estado')
-            }
-
-            else if(senha.length < 6){
-                alert('Utilize pelo menos 6 caracteres em sua senha')
-            }
-
-            else if(senha != confirmacao){
-                alert('Senhas diferentes')
-            }
-
-            else if(user.length < 3){
-                alert('Utilize pelo menos 3 caracteres em seu Username')
-            }
-
-        }
+        certo_email.style.transition = 'opacity 0.5s ease';
+        certo_email.style.opacity = 1;
     }
 }
+
+function validar_estado() {
+    var estado = inp_cad_estado.value;
+
+    if(estado.length != 2){
+        certo_estado.style.transition = 'opacity 0.5s ease';
+        certo_estado.style.opacity = 0;
+
+        errado_estado.style.transition = 'opacity 0.5s ease';
+        errado_estado.style.opacity = 1;
+    }
+
+    else {
+        errado_estado.style.transition = 'opacity 0.5s ease';
+        errado_estado.style.opacity = 0;
+
+        certo_estado.style.transition = 'opacity 0.5s ease';
+        certo_estado.style.opacity = 1;
+    }
+}
+
+function validar_senha() {
+    var senha = inp_cad_senha.value;
+
+    if (senha.length < 6) {
+        /*  alert('Utilize pelo menos 6 caracteres em sua senha') */
+
+        certo_senha.style.transition = 'opacity 0.5s ease';
+        certo_senha.style.opacity = 0;
+
+        errado_senha.style.transition = 'opacity 0.5s ease';
+        errado_senha.style.opacity = 1;
+    }
+
+    else {
+        errado_senha.style.transition = 'opacity 0.5s ease';
+        errado_senha.style.opacity = 0;
+
+        certo_senha.style.transition = 'opacity 0.5s ease';
+        certo_senha.style.opacity = 1;
+    }
+}
+
+function validar_senhac() {
+    var senha = inp_cad_senha.value;
+    var confirmacao = inp_confirmacao.value;
+
+    if (senha != confirmacao) {
+        /* alert('Senhas diferentes') */
+        certo_senhac.style.transition = 'opacity 0.5s ease';
+        certo_senhac.style.opacity = 0;
+
+        errado_senhac.style.transition = 'opacity 0.5s ease';
+        errado_senhac.style.opacity = 1;
+    }
+
+    else{
+        errado_senhac.style.transition = 'opacity 0.5s ease';
+        errado_senhac.style.opacity = 0;
+
+        certo_senhac.style.transition = 'opacity 0.5s ease';
+        certo_senhac.style.opacity = 1;
+    }
+}
+
+function validar_user(){
+    var user = inp_cad_user.value;
+
+    if(user.length < 3){
+        /* alert('Utilize pelo menos 3 caracteres em seu Username') */
+
+        certo_user.style.transition = 'opacity 0.5s ease';
+        certo_user.style.opacity = 0;
+
+        errado_user.style.transition = 'opacity 0.5s ease';
+        errado_user.style.opacity = 1;
+    }
+
+    else{
+        errado_user.style.transition = 'opacity 0.5s ease';
+        errado_user.style.opacity = 0;
+
+        certo_user.style.transition = 'opacity 0.5s ease';
+        certo_user.style.opacity = 1;
+    }
+}
+
+function validar_nome() {
+    var nome = inp_cad_nome.value;
+
+    if (nome.length < 3) {
+        /* alert('insira um nome com pelo menos 3 letras'); */
+
+        certo_nome.style.transition = 'opacity 0.5s ease'
+        certo_nome.style.opacity = 0
+
+        errado_nome.style.transition = 'opacity 0.5s ease'
+        errado_nome.style.opacity = 1
+    }
+
+    else {
+        errado_nome.style.transition = 'opacity 0.5s ease'
+        errado_nome.style.opacity = 0
+
+        certo_nome.style.transition = 'opacity 0.5s ease'
+        certo_nome.style.opacity = 1;
+    }
+}
+
+
+// Revisar e Achar um jeito certo de fazer isso
+
+/* for (let c = 0; c < nome.length; c++) {
+    let interval = /^[^a-zA-ZãÃâÂáÁõÕóÓíÍéÉúÚ ]+$/;
+
+    if (nome[c].match(interval)) {
+        alert('Insira um nome com caracteres válidos')
+        c = nome.length;
+
+        nome_nome.style.transition = 'opacity 0.5s ease'
+        nome_nome.style.opacity = 1
+
+        certo_nome.style.transition = 'opacity 0.5s ease'
+        certo_nome.style.opacity = 0
+    }
+    else {
+        errado_nome.style.transition = 'opacity 0.5s ease'
+        errado_nome.style.opacity = 0
+
+        certo_nome.style.transition = 'opacity 0.5s ease'
+        certo_nome.style.opacity = 1;
+    }
+} */

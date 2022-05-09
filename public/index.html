@@ -48,20 +48,38 @@
                 <form id="form_cadastro">
                     <span style="font-size: 1em; color: #f2f2f2;">Faça parte da nossa comunidade!</span>
                     <div>
-                        <input placeholder="Nome" id="inp_cad_nome">
-                        <input placeholder="Email" id="inp_cad_email">
+                        <input placeholder="Nome" id="inp_cad_nome" onkeyup="validar_nome()">
+                        <img src="img/certo.png" id="certo_nome">
+                        <img src="img/errado.png" id="errado_nome">
+
+                        <input placeholder="Email" id="inp_cad_email" onkeyup="validar_email()">
+                        <img src="img/certo.png" id="certo_email">
+                        <img src="img/errado.png" id="errado_email">
                     </div>
                     <div>
                         <input placeholder="Cep" id="inp_cad_cep" maxlength="9" onchange="viacep()"
-                            onkeyup="mascara_cep()" onkeydown="mascara_cep_volta()">
-                        <input placeholder="Estado" id="inp_cad_estado" maxlength="2">
+                            onkeyup="mascara_up()" onkeydown="mascara_press()">
+                        <img src="img/certo.png" id="certo_cep">
+                        <img src="img/errado.png" id="errado_cep">
+
+                        <input placeholder="Estado" id="inp_cad_estado" maxlength="2" onkeyup="validar_estado()">
+                        <img src="img/certo.png" id="certo_estado">
+                        <img src="img/errado.png" id="errado_estado">
                     </div>
                     <div>
-                        <input placeholder="Senha" id="inp_cad_senha">
-                        <input placeholder="Confirme sua Senha" id="inp_confirmacao">
+                        <input placeholder="Senha" id="inp_cad_senha" onkeyup="validar_senha()">
+                        <img src="img/certo.png" id="certo_senha">
+                        <img src="img/errado.png" id="errado_senha">
+
+                        <input placeholder="Confirme sua Senha" id="inp_confirmacao" onkeyup="validar_senhac()">
+                        <img src="img/certo.png" id="certo_senhac">
+                        <img src="img/errado.png" id="errado_senhac">
                     </div>
-                    <input placeholder="Username" id="inp_cad_user">
-                    <button type="button" onclick="cadastrar()">Cadastrar</button>
+                    <input placeholder="Username" id="inp_cad_user" onkeyup="validar_user()">
+                    <img src="img/certo.png" id="certo_user">
+                    <img src="img/errado.png" id="errado_user">
+
+                    <button type="button" onclick="verificar_cadastro()">Cadastrar</button>
                 </form>
             </div>
         </div>
@@ -81,6 +99,13 @@
             resposta.json().then(function (data) {
                 console.log(data)
                 inp_cad_estado.value = data.uf;
+                inp_cad_estado.disabled = true;
+
+                errado_estado.style.transition = 'opacity 0.5s ease';
+                errado_estado.style.opacity = 0;
+
+                certo_estado.style.transition = 'opacity 0.5s ease';
+                certo_estado.style.opacity = 1;
             })
 
         }).catch(function (erro) {
@@ -88,23 +113,36 @@
         })
     }
 
-    function mascara_cep() {
+    function mascara_up() {
         let cep = inp_cad_cep.value;
-        if(event.keyCode != 8){
+        if (event.keyCode != 8) {
             if (cep.length == 5) {
                 inp_cad_cep.value += '-'
             }
         }
-        /* else{
-            if()
-        } */
+
+        if (cep.length != 9) {
+            certo_cep.style.transition = 'opacity 0.5s ease';
+            certo_cep.style.opacity = 0;
+            
+            errado_cep.style.transition = 'opacity 0.5s ease';
+            errado_cep.style.opacity = 1;
+        }
+
+        else{
+            errado_cep.style.transition = 'opacity 0.5s ease';
+            errado_cep.style.opacity = 0;
+
+            certo_cep.style.transition = 'opacity 0.5s ease';
+            certo_cep.style.opacity = 1;
+        }
     }
 
-    function mascara_cep_volta(){
+    function mascara_press() {
         let cep = inp_cad_cep.value;
 
-        if(cep.length == 5){
-            if(event.keyCode != 8){
+        if (cep.length == 5) {
+            if (event.keyCode != 8) {
                 inp_cad_cep.value += '-'
             }
         }

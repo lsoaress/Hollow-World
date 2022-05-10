@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-body{
+body {
     padding: 0;
     margin: 0;
     height: 100vh;
 }
 
-*{
-    z-index: 999;
-    font-family: 'Poppins', sans-serif;;
+* {
+    font-family: 'Poppins', sans-serif;
 }
 
 #myvideo {
@@ -21,7 +20,7 @@ body{
     z-index: -1 !important;
 }
 
-#container_main{
+#container_main {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -29,17 +28,17 @@ body{
     align-items: center;
 }
 
-#div_logo{
+#div_logo {
     height: 20%;
     display: flex;
     justify-content: center;
 }
 
-#div_logo img{
+#div_logo img {
     filter: drop-shadow(0px 54px 55px #ec9c47);
 }
 
-#container_selecao{
+#container_selecao {
     height: 35%;
     transition: 1s;
     background-color: #2525257d;
@@ -55,7 +54,7 @@ body{
     box-shadow: #ec9c4740 0px 54px 55px, #ec9c471f 0px -12px 30px, #ec9c471f 0px 4px 6px, #ec9c472b 0px 12px 13px, #ec9c4717 0px -3px 5px;
 }
 
-.txt_selecao{
+.txt_selecao {
     color: #fceeee;
     text-align: center;
     outline: 0;
@@ -66,23 +65,23 @@ body{
     margin-left: 12%;
 }
 
-.txt_selecao:hover{
+.txt_selecao:hover {
     transition: 1s;
     text-shadow: 0 0 10px #ec9c47, 0 0 20px #ec9c47, 0 0 30px #ec9c47, 0 0 40px #ec9c47, 0 0 50px #ec9c47, 0 0 60px #ec9c47, 0 0 70px #ec9c47;
 
 }
 
-.txt_selecao:hover ~ .arrow_d{
+.txt_selecao:hover~.arrow_d {
     opacity: 1;
     transition: 0.5s;
 }
 
-.div_dupla{
+.div_dupla {
     display: flex;
     transition: 1s;
 }
 
-.arrow_d{
+.arrow_d {
     margin: 13% 0 0 10%;
     width: 23px;
     height: 23px;
@@ -91,20 +90,21 @@ body{
     opacity: 0;
 }
 
-#container_login{
+#container_login {
     display: none;
     width: 100%;
     height: 100%;
 }
 
-#form_login{
+#form_login {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
-input{
+
+input {
     border-style: none;
     color: #f2f2f2;
     background-color: #25252500;
@@ -114,17 +114,18 @@ input{
     outline: 0;
 }
 
-input::placeholder{
+input::placeholder {
     color: #f2f2f27e;
 }
 
-#form_login span{
-    font-size: 12.8px ;
+#form_login span {
+    font-size: 12.8px;
     color: #f2f2f2;
     text-align: center;
 }
 
-#form_login button, #form_cadastro button{
+#form_login button,
+#form_cadastro button {
     transition: 0.5s;
     color: #252525;
     background-color: #ec9c47;
@@ -137,47 +138,48 @@ input::placeholder{
     cursor: pointer;
 }
 
-#form_login button:hover, #form_cadastro button:hover{
+#form_login button:hover,
+#form_cadastro button:hover {
     box-shadow: 0 12px 16px 0 #e6e5e53d, 0 17px 50px 0 #e6e5e53d;
 }
 
-#form_login img{
+#form_login img {
     transition: 1s;
     cursor: pointer;
     height: 15%;
     margin: -10% 0 -11% 0;
 }
 
-#form_login img:hover{
+#form_login img:hover {
     transition: 1s;
     filter: drop-shadow(0 0 0.75rem #ec9c47);
 }
 
-#divisao_cad{
+#divisao_cad {
     display: none;
     width: 1px;
     height: 90%;
     background-color: #ec9c47;
 }
 
-.span_call_cadastro{
+.span_call_cadastro {
     transition: 0.5s;
     color: #09c5cb !important;
     cursor: pointer;
 }
 
-.span_call_cadastro:hover{
+.span_call_cadastro:hover {
     color: #e46975 !important;
     transition: 0.5s;
 }
 
-#container_cadastro{
+#container_cadastro {
     display: none;
     width: 56%;
     height: 100%;
 }
 
-#form_cadastro{
+#form_cadastro {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -185,33 +187,106 @@ input::placeholder{
     align-items: center;
 }
 
-#form_cadastro div{
+#form_cadastro div {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-#certo_nome, #errado_nome, #certo_cep, #errado_cep, #certo_senha, #errado_senha{
+#certo_nome,
+#errado_nome,
+#certo_cep,
+#errado_cep,
+#certo_senha,
+#errado_senha {
     transition: 1s;
     position: fixed;
     margin: 0% 0% 0% -2.5%;
     width: 1.5%;
     opacity: 0;
+    display: none;
 }
 
-#certo_senhac, #errado_senhac, #certo_estado, #errado_estado, #certo_email, #errado_email{
+
+#certo_senhac,
+#errado_senhac,
+#certo_estado,
+#errado_estado,
+#certo_email,
+#errado_email {
     transition: 1s;
     position: fixed;
     margin: 0% 0% 0% 14.5%;
     width: 1.5%;
     opacity: 0;
+    display: none;
 }
 
-#certo_user, #errado_user{
+#certo_user,
+#errado_user {
     transition: 1s;
     position: fixed;
     margin: 6.3% 0% 0% 5.9%;
     width: 1.5%;
-    opacity: 0;  
+    opacity: 0;
+    display: none;
+}
+
+#caixa_nome_errado, #caixa_cep_errado, #caixa_senha_errado{
+    width: 11% !important;
+    height: 12%;
+    position: fixed;
+    background-color: white;
+    margin: 9% 0% 0% -18%;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.7s ease;
+    visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#caixa_email_errado, #caixa_estado_errado, #caixa_senhac_errado {
+    width: 11% !important;
+    height: 12%;
+    position: fixed;
+    background-color: white;
+    margin: 9% -17% 0% 0%;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.7s ease;
+    visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#caixa_user_errado {
+    width: 11% !important;
+    height: 12%;
+    position: fixed;
+    background-color: white;
+    margin: 21% -11% 0% -11%;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.7s ease;
+    visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg_erro{
+    font-size: 0.4em;
+    color: #252525;
+    font-weight: bold;
+    text-align: center;
 }

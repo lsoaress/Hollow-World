@@ -57,8 +57,40 @@ function back_home() {
         container_selecao.style.height = '35%';
         container_selecao.style.marginTop = '10%';
         container_selecao.style.flexDirection = 'column';
-        divisao_cad.style.display = 'none'
+        divisao_cad.style.display = 'none';
 
+        inp_cad_nome.value = '';
+        inp_cad_email.value = '';
+        inp_cad_cep.value = '';
+        inp_cad_estado.value = '';
+        inp_cad_senha.value = '';
+        inp_confirmacao.value = '';
+        inp_cad_user.value = '';
+
+        caixa_nome_errado.style.visibility = 'hidden';
+        caixa_email_errado.style.visibility = 'hidden';
+        caixa_cep_errado.style.visibility = 'hidden';
+        caixa_estado_errado.style.visibility = 'hidden';
+        caixa_senha_errado.style.visibility = 'hidden';
+        caixa_senhac_errado.style.visibility = 'hidden';
+        caixa_user_errado.style.visibility = 'hidden';
+
+        certo_nome.style.opacity = 0;
+        certo_email.style.opacity = 0;
+        certo_cep.style.opacity = 0;
+        certo_estado.style.opacity = 0;
+        certo_senha.style.opacity = 0;
+        certo_senhac.style.opacity = 0;
+        certo_user.style.opacity = 0;
+
+        errado_nome.style.opacity = 0;
+        errado_email.style.opacity = 0;
+        errado_cep.style.opacity = 0;
+        errado_estado.style.opacity = 0;
+        errado_senha.style.opacity = 0;
+        errado_senhac.style.opacity = 0;
+        errado_user.style.opacity = 0;
+        
     }, 500);
 
     setTimeout(function () {
@@ -110,7 +142,7 @@ function verificar_cadastro() {
     var certo_sc = certo_senhac.style.opacity;
     var certo_u = certo_user.style.opacity;
 
-    if(certo_n == 1 && certo_e == 1 && certo_es == 1 && certo_c == 1 && certo_s == 1 && certo_sc == 1 && certo_u == 1){
+    if (certo_n == 1 && certo_e == 1 && certo_es == 1 && certo_c == 1 && certo_s == 1 && certo_sc == 1 && certo_u == 1) {
         alert('tudo certo patrão')
     }
 
@@ -120,156 +152,308 @@ function verificar_cadastro() {
 }
 
 function cadastrar() {
-    
+
 }
 
 function validar_email() {
     var email = inp_cad_email.value;
+    caixa_email_errado.innerHTML = ''
 
     if (email.length < 6) {
-        /* alert('Email muito curto'); */
+        caixa_email_errado.innerHTML += '<span>Email muito curto</span>';
 
         certo_email.style.transition = 'opacity 0.5s ease';
         certo_email.style.opacity = 0;
 
-        errado_email.style.transition = 'opacity 0.5s ease';
-        errado_email.style.opacity = 1;
+        caixa_email_errado.style.visibility = 'visible'
+
+        certo_email.style.display = 'none';
+        errado_email.style.display = 'flex';
+
+        setTimeout(function () {
+            caixa_email_errado.style.transition = 'all 0.7s ease';
+            caixa_email_errado.style.opacity = 1
+
+            errado_email.style.transition = 'opacity 0.5s ease';
+            errado_email.style.opacity = 1;
+        }, 100)
+
+
     }
 
-    else if (email.indexOf('@') < 0) {
-        /* alert('Faltando @ no seu email'); */
+    if (email.indexOf('@') < 0) {
+        caixa_email_errado.innerHTML += '<span>É necessário @</span>';
 
         certo_email.style.transition = 'opacity 0.5s ease';
         certo_email.style.opacity = 0;
 
-        errado_email.style.transition = 'opacity 0.5s ease';
-        errado_email.style.opacity = 1;
+        caixa_email_errado.style.visibility = 'visible';
+
+        certo_email.style.display = 'none';
+        errado_email.style.display = 'flex';
+
+        setTimeout(function () {
+            caixa_email_errado.style.transition = 'all 0.7s ease';
+            caixa_email_errado.style.opacity = 1;
+
+            errado_email.style.transition = 'opacity 0.5s ease';
+            errado_email.style.opacity = 1;
+        }, 100)
     }
 
     else if (email.startsWith('@') || email.endsWith('@')) {
-        /* alert('email não pode começar ou terminar com @'); */
+        caixa_email_errado.innerHTML += '<span>Email não pode começar ou terminar com @</span>';
 
         certo_email.style.transition = 'opacity 0.5s ease';
         certo_email.style.opacity = 0;
 
-        errado_email.style.transition = 'opacity 0.5s ease';
-        errado_email.style.opacity = 1;
+        caixa_email_errado.style.visibility = 'visible'
+
+        certo_email.style.display = 'none';
+        errado_email.style.display = 'flex';
+
+        setTimeout(function () {
+            caixa_email_errado.style.transition = 'all 0.7s ease';
+            caixa_email_errado.style.opacity = 1
+
+            errado_email.style.transition = 'opacity 0.5s ease';
+            errado_email.style.opacity = 1;
+        }, 100)
     }
 
     else {
         errado_email.style.transition = 'opacity 0.5s ease';
         errado_email.style.opacity = 0;
 
-        certo_email.style.transition = 'opacity 0.5s ease';
-        certo_email.style.opacity = 1;
+        caixa_email_errado.style.transition = 'all 0.7s ease';
+        caixa_email_errado.style.opacity = 0
+
+        errado_email.style.display = 'none';
+        certo_email.style.display = 'flex';
+
+        setTimeout(function () {
+            caixa_email_errado.style.visibility = 'hidden'
+
+            certo_email.style.transition = 'opacity 0.5s ease';
+            certo_email.style.opacity = 1;
+        }, 100)
     }
 }
 
 function validar_estado() {
     var estado = inp_cad_estado.value;
+    caixa_estado_errado.innerHTML = '';
 
-    if(estado.length != 2){
+    if (estado.length != 2) {
+        caixa_estado_errado.innerHTML = '<span>A UF deve ter duas letras';
+
         certo_estado.style.transition = 'opacity 0.5s ease';
         certo_estado.style.opacity = 0;
 
-        errado_estado.style.transition = 'opacity 0.5s ease';
-        errado_estado.style.opacity = 1;
+        caixa_estado_errado.style.visibility = 'visible'
+
+        errado_estado.style.display = 'flex';
+        certo_estado.style.display = 'none';
+
+        setTimeout(function () {
+            caixa_estado_errado.style.transition = 'all 0.7s ease';
+            caixa_estado_errado.style.opacity = 1;
+
+            errado_estado.style.transition = 'opacity 0.5s ease';
+            errado_estado.style.opacity = 1;
+        }, 100)
     }
 
     else {
         errado_estado.style.transition = 'opacity 0.5s ease';
         errado_estado.style.opacity = 0;
 
-        certo_estado.style.transition = 'opacity 0.5s ease';
-        certo_estado.style.opacity = 1;
+        errado_estado.style.display = 'none';
+        certo_estado.style.display = 'flex';
+
+        caixa_estado_errado.style.transition = 'all 0.7s ease';
+        caixa_estado_errado.style.opacity = 0;
+
+        setTimeout(function () {
+            caixa_estado_errado.style.visibility = 'visible'
+
+            certo_estado.style.transition = 'opacity 0.5s ease';
+            certo_estado.style.opacity = 1;
+        }, 100)
     }
 }
 
 function validar_senha() {
     var senha = inp_cad_senha.value;
+    caixa_senha_errado.innerHTML = '';
 
     if (senha.length < 6) {
-        /*  alert('Utilize pelo menos 6 caracteres em sua senha') */
+        caixa_senha_errado.innerHTML = '<span>Utilize pelo menos 6 caracteres em sua senha<span>';
 
         certo_senha.style.transition = 'opacity 0.5s ease';
         certo_senha.style.opacity = 0;
 
-        errado_senha.style.transition = 'opacity 0.5s ease';
-        errado_senha.style.opacity = 1;
+        caixa_senha_errado.style.visibility = 'visible'
+
+        errado_senha.style.display = 'flex';
+        certo_senha.style.display = 'none';
+
+        setTimeout(function () {
+            caixa_senha_errado.style.transition = 'all 0.7s ease';
+            caixa_senha_errado.style.opacity = 1;
+
+            errado_senha.style.transition = 'opacity 0.5s ease';
+            errado_senha.style.opacity = 1;
+        }, 100)
     }
 
     else {
         errado_senha.style.transition = 'opacity 0.5s ease';
         errado_senha.style.opacity = 0;
 
-        certo_senha.style.transition = 'opacity 0.5s ease';
-        certo_senha.style.opacity = 1;
+        errado_senha.style.display = 'none';
+        certo_senha.style.display = 'flex';
+
+        caixa_senha_errado.style.transition = 'all 0.7s ease';
+        caixa_senha_errado.style.opacity = 0;
+
+        setTimeout(function () {
+            caixa_senha_errado.style.visibility = 'visible'
+
+            certo_senha.style.transition = 'opacity 0.5s ease';
+            certo_senha.style.opacity = 1;
+        }, 100)
     }
 }
 
 function validar_senhac() {
     var senha = inp_cad_senha.value;
     var confirmacao = inp_confirmacao.value;
+    caixa_senhac_errado.innerHTML = '';
 
     if (senha != confirmacao) {
-        /* alert('Senhas diferentes') */
+        caixa_senhac_errado.innerHTML = 'Confirmação da senha diferente da senha';
+
         certo_senhac.style.transition = 'opacity 0.5s ease';
         certo_senhac.style.opacity = 0;
 
-        errado_senhac.style.transition = 'opacity 0.5s ease';
-        errado_senhac.style.opacity = 1;
+        caixa_senhac_errado.style.visibility = 'visible'
+
+        errado_senhac.style.display = 'flex';
+        certo_senhac.style.display = 'none';
+
+        setTimeout(function () {
+            caixa_senhac_errado.style.transition = 'all 0.7s ease';
+            caixa_senhac_errado.style.opacity = 1;
+
+            errado_senhac.style.transition = 'opacity 0.5s ease';
+            errado_senhac.style.opacity = 1;
+        }, 100)
     }
 
-    else{
+    else {
         errado_senhac.style.transition = 'opacity 0.5s ease';
         errado_senhac.style.opacity = 0;
 
-        certo_senhac.style.transition = 'opacity 0.5s ease';
-        certo_senhac.style.opacity = 1;
+        errado_senhac.style.display = 'none';
+        certo_senhac.style.display = 'flex';
+
+        caixa_senhac_errado.style.transition = 'all 0.7s ease';
+        caixa_senhac_errado.style.opacity = 0;
+
+        setTimeout(function () {
+            caixa_senhac_errado.style.visibility = 'visible'
+
+            certo_senhac.style.transition = 'opacity 0.5s ease';
+            certo_senhac.style.opacity = 1;
+        }, 100)
     }
 }
 
-function validar_user(){
+function validar_user() {
     var user = inp_cad_user.value;
+    caixa_user_errado.innerHTML = '';
 
-    if(user.length < 3){
-        /* alert('Utilize pelo menos 3 caracteres em seu Username') */
+    if (user.length < 3) {
+        caixa_user_errado.innerHTML = 'Utilize pelo menos 3 caracteres em seu Username';
 
         certo_user.style.transition = 'opacity 0.5s ease';
         certo_user.style.opacity = 0;
 
-        errado_user.style.transition = 'opacity 0.5s ease';
-        errado_user.style.opacity = 1;
+        caixa_user_errado.style.visibility = 'visible'
+
+        errado_user.style.display = 'flex';
+        certo_user.style.display = 'none';
+
+        setTimeout(function () {
+            caixa_user_errado.style.transition = 'all 0.7s ease';
+            caixa_user_errado.style.opacity = 1;
+
+            errado_user.style.transition = 'opacity 0.5s ease';
+            errado_user.style.opacity = 1;
+        }, 100)
     }
 
-    else{
-        errado_user.style.transition = 'opacity 0.5s ease';
+    else {
+        errado_senhac.style.transition = 'opacity 0.5s ease';
         errado_user.style.opacity = 0;
 
-        certo_user.style.transition = 'opacity 0.5s ease';
-        certo_user.style.opacity = 1;
+        errado_user.style.display = 'none';
+        certo_user.style.display = 'flex';
+
+        caixa_user_errado.style.transition = 'all 0.7s ease';
+        caixa_user_errado.style.opacity = 0;
+
+        setTimeout(function () {
+            caixa_user_errado.style.visibility = 'visible'
+
+            certo_user.style.transition = 'opacity 0.5s ease';
+            certo_user.style.opacity = 1;
+        }, 100)
     }
 }
 
 function validar_nome() {
     var nome = inp_cad_nome.value;
+    caixa_nome_errado.innerHTML = ''
 
     if (nome.length < 3) {
-        /* alert('insira um nome com pelo menos 3 letras'); */
 
-        certo_nome.style.transition = 'opacity 0.5s ease'
-        certo_nome.style.opacity = 0
+        caixa_nome_errado.innerHTML += '<span>Insira um nome com pelo menos 3 letras</span>';
 
-        errado_nome.style.transition = 'opacity 0.5s ease'
-        errado_nome.style.opacity = 1
+        certo_nome.style.transition = 'opacity 0.5s ease';
+        certo_nome.style.opacity = 0;
+
+        errado_nome.style.display = 'flex';
+        certo_nome.style.display = 'none';
+
+        caixa_nome_errado.style.visibility = 'visible'
+
+        setTimeout(function () {
+            errado_nome.style.transition = 'opacity 0.5s ease'
+            errado_nome.style.opacity = 1
+
+            caixa_nome_errado.style.opacity = 1
+            caixa_nome_errado.style.transition = 'all 0.7s ease'
+        }, 100)
     }
 
     else {
-        errado_nome.style.transition = 'opacity 0.5s ease'
-        errado_nome.style.opacity = 0
+        errado_nome.style.transition = 'opacity 0.5s ease';
+        errado_nome.style.opacity = 0;
 
-        certo_nome.style.transition = 'opacity 0.5s ease'
-        certo_nome.style.opacity = 1;
+        caixa_nome_errado.style.transition = 'all 0.7s ease';
+        caixa_nome_errado.style.opacity = 0;
+
+        errado_nome.style.display = 'none';
+        certo_nome.style.display = 'flex';
+
+        setTimeout(function () {
+            caixa_nome_errado.style.visibility = 'hidden'
+
+            certo_nome.style.transition = 'opacity 0.5s ease'
+            certo_nome.style.opacity = 1;
+        }, 100)
     }
 }
 

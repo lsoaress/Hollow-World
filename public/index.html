@@ -51,33 +51,40 @@
                         <input placeholder="Nome" id="inp_cad_nome" onkeyup="validar_nome()">
                         <img src="img/certo.png" id="certo_nome">
                         <img src="img/errado.png" id="errado_nome">
+                        <span id="caixa_nome_errado" class="msg_erro"></span>
 
                         <input placeholder="Email" id="inp_cad_email" onkeyup="validar_email()">
                         <img src="img/certo.png" id="certo_email">
                         <img src="img/errado.png" id="errado_email">
+                        <span id="caixa_email_errado" class="msg_erro"></span>
                     </div>
                     <div>
                         <input placeholder="Cep" id="inp_cad_cep" maxlength="9" onchange="viacep()"
-                            onkeyup="mascara_up()" onkeydown="mascara_press()">
+                            onkeyup="mascara_up()" onkeydown="mascara_down()">
                         <img src="img/certo.png" id="certo_cep">
                         <img src="img/errado.png" id="errado_cep">
+                        <span id="caixa_cep_errado" class="msg_erro"></span>
 
-                        <input placeholder="Estado" id="inp_cad_estado" maxlength="2" onkeyup="validar_estado()">
+                        <input placeholder="UF" id="inp_cad_estado" maxlength="2" onkeyup="validar_estado()">
                         <img src="img/certo.png" id="certo_estado">
                         <img src="img/errado.png" id="errado_estado">
+                        <span id="caixa_estado_errado" class="msg_erro"></span>
                     </div>
                     <div>
-                        <input placeholder="Senha" id="inp_cad_senha" onkeyup="validar_senha()">
+                        <input placeholder="Senha" id="inp_cad_senha" onkeyup="validar_senha(), validar_senhac()">
                         <img src="img/certo.png" id="certo_senha">
                         <img src="img/errado.png" id="errado_senha">
+                        <span id="caixa_senha_errado" class="msg_erro"></span>
 
                         <input placeholder="Confirme sua Senha" id="inp_confirmacao" onkeyup="validar_senhac()">
                         <img src="img/certo.png" id="certo_senhac">
                         <img src="img/errado.png" id="errado_senhac">
+                        <span id="caixa_senhac_errado" class="msg_erro"></span>
                     </div>
                     <input placeholder="Username" id="inp_cad_user" onkeyup="validar_user()">
                     <img src="img/certo.png" id="certo_user">
                     <img src="img/errado.png" id="errado_user">
+                    <span id="caixa_user_errado" class="msg_erro"></span>
 
                     <button type="button" onclick="verificar_cadastro()">Cadastrar</button>
                 </form>
@@ -104,8 +111,12 @@
                 errado_estado.style.transition = 'opacity 0.5s ease';
                 errado_estado.style.opacity = 0;
 
-                certo_estado.style.transition = 'opacity 0.5s ease';
-                certo_estado.style.opacity = 1;
+                certo_estado.style.display = 'flex';
+
+                setInterval(function () {
+                    certo_estado.style.transition = 'opacity 0.5s ease';
+                    certo_estado.style.opacity = 1;
+                }, 100)
             })
 
         }).catch(function (erro) {
@@ -115,6 +126,8 @@
 
     function mascara_up() {
         let cep = inp_cad_cep.value;
+        caixa_cep_errado.innerHTML = '';
+
         if (event.keyCode != 8) {
             if (cep.length == 5) {
                 inp_cad_cep.value += '-'
@@ -122,23 +135,48 @@
         }
 
         if (cep.length != 9) {
+            caixa_cep_errado.innerHTML = '<span>O cep deve ter 9 números contando com o "-"</span>';
+
             certo_cep.style.transition = 'opacity 0.5s ease';
             certo_cep.style.opacity = 0;
-            
-            errado_cep.style.transition = 'opacity 0.5s ease';
-            errado_cep.style.opacity = 1;
+
+            caixa_cep_errado.style.visibility = 'visible'
+
+            errado_cep.style.display = 'flex';
+            certo_cep.style.display = 'none';
+
+            setTimeout(function () {
+                caixa_cep_errado.style.transition = 'all 0.7s ease';
+                caixa_cep_errado.style.opacity = 1
+
+                errado_cep.style.transition = 'opacity 0.5s ease';
+                errado_cep.style.opacity = 1;
+            }, 100)
         }
 
-        else{
+        else {
             errado_cep.style.transition = 'opacity 0.5s ease';
             errado_cep.style.opacity = 0;
 
-            certo_cep.style.transition = 'opacity 0.5s ease';
-            certo_cep.style.opacity = 1;
+            errado_cep.style.display = 'none';
+            certo_cep.style.display = 'flex';
+
+            caixa_cep_errado.style.visibility = 'hidden'
+
+            caixa_cep_errado.style.transition = 'all 0.7s ease';
+            caixa_cep_errado.style.opacity = 0;
+
+            setTimeout(function () {
+                errado_cep.style.transition = 'opacity 0.5s ease';
+                errado_cep.style.opacity = 0;
+
+                certo_cep.style.transition = 'opacity 0.5s ease';
+                certo_cep.style.opacity = 1;
+            }, 100)
         }
     }
 
-    function mascara_press() {
+    function mascara_down() {
         let cep = inp_cad_cep.value;
 
         if (cep.length == 5) {

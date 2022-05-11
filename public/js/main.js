@@ -1,4 +1,8 @@
+// chamar a estilização da div do login
+
 function call_login() {
+
+    form_login.reset();
 
     sel_1.style.transition = "opacity 0.5s ease";
     sel_2.style.transition = "opacity 0.5s ease";
@@ -14,26 +18,62 @@ function call_login() {
         container_selecao.style.height = '60%';
         container_selecao.style.marginTop = '2%';
 
-
-
         document.title = 'Login';
         container_login.style.display = 'flex';
         container_selecao.style.flexDirection = 'row';
+
+        container_cadastro.style.transition = "opacity 0.5s ease";
+        container_cadastro.style.opacity = 0;
+        container_cadastro.style.display = 'none';
+        divisao_cad.style.display = 'none';
 
     }, 500);
 
     setTimeout(function () {
         container_login.style.transition = "opacity 0.5s ease";
-        container_cadastro.style.transition = "opacity 0.5s ease";
 
         container_login.style.width = '100%';
-
         container_login.style.opacity = 1;
-        container_cadastro.style.opacity = 1;
+
 
     }, 550);
 
 }
+
+// Apagar todo o resto deixado pelo cadastro anterior, caso a pessoa comece a fazer o cadastro, use a seta e tente fazer o cadastro novamente
+
+function reset_cad() {
+    inp_cad_estado.disabled = false;
+
+    form_cadastro.reset();
+
+    caixa_nome_errado.style.visibility = 'hidden';
+    caixa_email_errado.style.visibility = 'hidden';
+    caixa_cep_errado.style.visibility = 'hidden';
+    caixa_estado_errado.style.visibility = 'hidden';
+    caixa_senha_errado.style.visibility = 'hidden';
+    caixa_senhac_errado.style.visibility = 'hidden';
+    caixa_user_errado.style.visibility = 'hidden';
+
+    certo_nome.style.opacity = 0;
+    certo_email.style.opacity = 0;
+    certo_cep.style.opacity = 0;
+    certo_estado.style.opacity = 0;
+    certo_senha.style.opacity = 0;
+    certo_senhac.style.opacity = 0;
+    certo_user.style.opacity = 0;
+
+    errado_nome.style.opacity = 0;
+    errado_email.style.opacity = 0;
+    errado_cep.style.opacity = 0;
+    errado_estado.style.opacity = 0;
+    errado_senha.style.opacity = 0;
+    errado_senhac.style.opacity = 0;
+    errado_user.style.opacity = 0;
+
+}
+
+// Função usada na seta para voltar na seleção entre entrar e visitar
 
 function back_home() {
 
@@ -59,38 +99,8 @@ function back_home() {
         container_selecao.style.flexDirection = 'column';
         divisao_cad.style.display = 'none';
 
-        inp_cad_nome.value = '';
-        inp_cad_email.value = '';
-        inp_cad_cep.value = '';
-        inp_cad_estado.value = '';
-        inp_cad_senha.value = '';
-        inp_confirmacao.value = '';
-        inp_cad_user.value = '';
 
-        caixa_nome_errado.style.visibility = 'hidden';
-        caixa_email_errado.style.visibility = 'hidden';
-        caixa_cep_errado.style.visibility = 'hidden';
-        caixa_estado_errado.style.visibility = 'hidden';
-        caixa_senha_errado.style.visibility = 'hidden';
-        caixa_senhac_errado.style.visibility = 'hidden';
-        caixa_user_errado.style.visibility = 'hidden';
 
-        certo_nome.style.opacity = 0;
-        certo_email.style.opacity = 0;
-        certo_cep.style.opacity = 0;
-        certo_estado.style.opacity = 0;
-        certo_senha.style.opacity = 0;
-        certo_senhac.style.opacity = 0;
-        certo_user.style.opacity = 0;
-
-        errado_nome.style.opacity = 0;
-        errado_email.style.opacity = 0;
-        errado_cep.style.opacity = 0;
-        errado_estado.style.opacity = 0;
-        errado_senha.style.opacity = 0;
-        errado_senhac.style.opacity = 0;
-        errado_user.style.opacity = 0;
-        
     }, 500);
 
     setTimeout(function () {
@@ -98,16 +108,23 @@ function back_home() {
         sel_2.style.transition = "opacity 0.5s ease";
         sel_1.style.opacity = 1;
         sel_2.style.opacity = 1;
+        sem_login.innerHTML = `
+            Sem Login? <span onclick="call_cadastro()" class="span_call_cadastro">Venha fazer parte da
+            nossa comunidade!</span>`
     }, 550)
 
-    sem_login.innerHTML = `
-        Sem Login? <span onclick="call_cadastro()" class="span_call_cadastro">Venha fazer parte da
-        nossa comunidade!</span>`
 }
+
+// chamar a estilização da div do cadastro
 
 function call_cadastro() {
 
+    reset_cad();
+
     setTimeout(function () {
+
+        container_cadastro.style.transition = "opacity 0.5s ease";
+        container_cadastro.style.opacity = 1;
 
         container_selecao.style.width = '67%';
         container_selecao.style.height = '60%';
@@ -125,35 +142,9 @@ function call_cadastro() {
     }, 500);
 }
 
-function verificar_cadastro() {
-    var nome = inp_cad_nome.value;
-    var email = inp_cad_email.value;
-    var estado = inp_cad_estado.value;
-    var cep = inp_cad_cep.value;
-    var senha = inp_cad_senha.value;
-    var confirmacao = inp_confirmacao.value;
-    var user = inp_cad_user.value;
 
-    var certo_n = certo_nome.style.opacity;
-    var certo_e = certo_email.style.opacity;
-    var certo_es = certo_estado.style.opacity;
-    var certo_c = certo_cep.style.opacity;
-    var certo_s = certo_senha.style.opacity;
-    var certo_sc = certo_senhac.style.opacity;
-    var certo_u = certo_user.style.opacity;
 
-    if (certo_n == 1 && certo_e == 1 && certo_es == 1 && certo_c == 1 && certo_s == 1 && certo_sc == 1 && certo_u == 1) {
-        alert('tudo certo patrão')
-    }
-
-    if (nome.trim() == '' || email.trim() == '' || estado.trim() == '' || cep.trim() == '' || senha.trim() == '' || confirmacao.trim() == '' || user.trim() == '') {
-        alert('Preencha todos os campos!')
-    }
-}
-
-function cadastrar() {
-
-}
+// validações do email
 
 function validar_email() {
     var email = inp_cad_email.value;
@@ -240,6 +231,8 @@ function validar_email() {
     }
 }
 
+// validaçõs do estado
+
 function validar_estado() {
     var estado = inp_cad_estado.value;
     caixa_estado_errado.innerHTML = '';
@@ -283,6 +276,8 @@ function validar_estado() {
     }
 }
 
+// validações da senha
+
 function validar_senha() {
     var senha = inp_cad_senha.value;
     caixa_senha_errado.innerHTML = '';
@@ -325,6 +320,8 @@ function validar_senha() {
         }, 100)
     }
 }
+
+// confirmar se a senha é a mesma da confirmação
 
 function validar_senhac() {
     var senha = inp_cad_senha.value;
@@ -370,6 +367,8 @@ function validar_senhac() {
     }
 }
 
+// validações do usuário
+
 function validar_user() {
     var user = inp_cad_user.value;
     caixa_user_errado.innerHTML = '';
@@ -405,13 +404,15 @@ function validar_user() {
         caixa_user_errado.style.opacity = 0;
 
         setTimeout(function () {
-            caixa_user_errado.style.visibility = 'visible'
+            caixa_user_errado.style.visibility = 'hidden'
 
             certo_user.style.transition = 'opacity 0.5s ease';
             certo_user.style.opacity = 1;
         }, 100)
     }
 }
+
+// validações do nome
 
 function validar_nome() {
     var nome = inp_cad_nome.value;
@@ -457,6 +458,139 @@ function validar_nome() {
     }
 }
 
+// Busca no banco se já existe email / usuario ja cadastrado com o valor da input
+
+function verificar_cadastro() {
+
+    var nome = inp_cad_nome.value;
+    var email = inp_cad_email.value;
+    var cep = inp_cad_cep.value;
+    var estado = inp_cad_estado.value;
+    var senha = inp_cad_senha.value;
+    var confirmacao = inp_confirmacao.value;
+    var user = inp_cad_user.value;
+
+    var certo_n = certo_nome.style.opacity;
+    var certo_e = certo_email.style.opacity;
+    var certo_es = certo_estado.style.opacity;
+    var certo_c = certo_cep.style.opacity;
+    var certo_u = certo_user.style.opacity;
+    var certo_s = certo_senha.style.opacity;
+    var certo_sc = certo_senhac.style.opacity;
+
+    if (nome.trim() == '' || email.trim() == '' || estado.trim() == '' || cep.trim() == '' || senha.trim() == '' || confirmacao.trim() == '' || user.trim() == '') {
+        alert('Preencha todos os campos!')
+    }
+
+    else if (certo_n == 1 && certo_e == 1 && certo_es == 1 && certo_c == 1 && certo_s == 1 && certo_sc == 1 && certo_u == 1) {
+        cadastrar();
+    }
+
+    else {
+        alert('Preencha todos os campos corretamente!')
+    }
+}
+
+// Função que realmente realiza o caastro
+
+function cadastrar() {
+    var nome = inp_cad_nome.value;
+    var email = inp_cad_email.value;
+    var estado = inp_cad_estado.value;
+    var cep = inp_cad_cep.value;
+    var user = inp_cad_user.value;
+    var senha = inp_cad_senha.value;
+
+    cep = cep.replace('-', '');
+
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nome,
+            emailServer: email,
+            estadoServer: estado,
+            cepServer: cep,
+            userServer: user,
+            senhaServer: senha
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            alert('Cadastro realizado com sucesso!')
+            call_login();
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+}
+
+// função logar
+
+function entrar() {
+
+    var email_user = inp_log_user_email.value;
+    var senha = inp_log_senha.value;
+
+    if (email_user == "" || senha == "") {
+        alert('Preencha todos os campos para prosseguir');
+        form_login.reset()
+    }
+    else {
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email_userServer: email_user,
+                senhaServer: senha,
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.USERNAME = json.username;
+
+                    window.location = "https://twitter.com/JustA1rs";
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+}
 
 // Revisar e Achar um jeito certo de fazer isso
 

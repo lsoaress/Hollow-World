@@ -32,9 +32,9 @@
             <div id="container_login">
                 <form id="form_login">
                     <span style="font-size: 1em">Bem vindo ao 'Projeto'!</span>
-                    <input id="inp_email" placeholder="Email">
-                    <input type="password" placeholder="Senha">
-                    <button type="button">Entrar</button>
+                    <input id="inp_log_user_email" placeholder="Email">
+                    <input id="inp_log_senha" type="password" placeholder="Senha">
+                    <button type="button" onclick="entrar()">Entrar</button>
                     <span id="sem_login">Sem Login? <span onclick="call_cadastro()" class="span_call_cadastro">Venha
                             fazer parte da
                             nossa comunidade!</span></span>
@@ -59,8 +59,8 @@
                         <span id="caixa_email_errado" class="msg_erro"></span>
                     </div>
                     <div>
-                        <input placeholder="Cep" id="inp_cad_cep" maxlength="9" onchange="viacep()"
-                            onkeyup="mascara_up()" onkeydown="mascara_down()">
+                        <input placeholder="Cep" id="inp_cad_cep" maxlength="9" onkeyup="mascara_up(), viacep()"
+                            onkeydown="mascara_down()">
                         <img src="img/certo.png" id="certo_cep">
                         <img src="img/errado.png" id="errado_cep">
                         <span id="caixa_cep_errado" class="msg_erro"></span>
@@ -81,7 +81,7 @@
                         <img src="img/errado.png" id="errado_senhac">
                         <span id="caixa_senhac_errado" class="msg_erro"></span>
                     </div>
-                    <input placeholder="Username" id="inp_cad_user" onkeyup="validar_user()">
+                    <input placeholder="Username" id="inp_cad_user" maxlength="20" onkeyup="validar_user()">
                     <img src="img/certo.png" id="certo_user">
                     <img src="img/errado.png" id="errado_user">
                     <span id="caixa_user_errado" class="msg_erro"></span>
@@ -106,17 +106,47 @@
             resposta.json().then(function (data) {
                 console.log(data)
                 inp_cad_estado.value = data.uf;
-                inp_cad_estado.disabled = true;
 
-                errado_estado.style.transition = 'opacity 0.5s ease';
-                errado_estado.style.opacity = 0;
+                if (inp_cad_estado.value == 'undefined') {
+                    caixa_estado_errado.innerHTML = '<span>CEP está errado'
 
-                certo_estado.style.display = 'flex';
-
-                setInterval(function () {
                     certo_estado.style.transition = 'opacity 0.5s ease';
-                    certo_estado.style.opacity = 1;
-                }, 100)
+                    certo_estado.style.opacity = 0;
+
+                    caixa_estado_errado.style.visibility = 'visible'
+
+                    certo_estado.style.display = 'none';
+                    errado_estado.style.display = 'flex';
+
+                    setTimeout(function () {
+                        caixa_estado_errado.style.transition = 'all 0.7s ease';
+                        caixa_estado_errado.style.opacity = 1
+
+                        errado_estado.style.transition = 'opacity 0.5s ease';
+                        errado_estado.style.opacity = 1;
+                    }, 100)
+                }
+                else {
+                    inp_cad_estado.value = data.uf;
+                    inp_cad_estado.disabled = true;
+
+                    errado_estado.style.transition = 'opacity 0.5s ease';
+                    errado_estado.style.opacity = 0;
+
+                    caixa_estado_errado.style.transition = 'all 0.7s ease';
+                    caixa_estado_errado.style.opacity = 0
+
+                    errado_estado.style.display = 'none';
+                    certo_estado.style.display = 'flex';
+
+                    setTimeout(function () {
+                        caixa_estado_errado.style.visibility = 'hidden'
+
+                        certo_estado.style.transition = 'opacity 0.5s ease';
+                        certo_estado.style.opacity = 1;
+                    }, 100)
+                }
+
             })
 
         }).catch(function (erro) {

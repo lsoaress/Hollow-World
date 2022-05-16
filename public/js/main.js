@@ -88,7 +88,7 @@ function back_home() {
 
         container_login.style.display = 'none';
         container_cadastro.style.display = 'none';
-        document.title = 'Home';
+        document.title = 'Bem vindo ao Hollow World!';
 
         sel_1.style.display = 'flex';
         sel_2.style.display = 'flex';
@@ -573,7 +573,7 @@ function entrar() {
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.USERNAME = json.username;
 
-                    window.location = "https://twitter.com/JustA1rs";
+                    window.location = "speedrun.html";
 
                 });
 
@@ -592,26 +592,7 @@ function entrar() {
     }
 }
 
-// Revisar e Achar um jeito certo de fazer isso
-
-/* for (let c = 0; c < nome.length; c++) {
-    let interval = /^[^a-zA-ZãÃâÂáÁõÕóÓíÍéÉúÚ ]+$/;
-
-    if (nome[c].match(interval)) {
-        alert('Insira um nome com caracteres válidos')
-        c = nome.length;
-
-        nome_nome.style.transition = 'opacity 0.5s ease'
-        nome_nome.style.opacity = 1
-
-        certo_nome.style.transition = 'opacity 0.5s ease'
-        certo_nome.style.opacity = 0
-    }
-    else {
-        errado_nome.style.transition = 'opacity 0.5s ease'
-        errado_nome.style.opacity = 0
-
-        certo_nome.style.transition = 'opacity 0.5s ease'
-        certo_nome.style.opacity = 1;
-    }
-} */
+function foward(){
+    window.location = 'speedrun.html';
+    sessionStorage.ID_USUARIO = null;
+}

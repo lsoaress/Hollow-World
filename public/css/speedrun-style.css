@@ -143,6 +143,7 @@ body::-webkit-scrollbar {
     background-color: #0c1f36db;
     padding: 0.5%;
     border-radius: 12px;
+    margin-bottom: 3%;
     /* box-shadow: #ec9c4740 0px 21px 80px, #ec9c471f 0px -8px 64px, #ec9c471f 0px 4px 6px, #ec9c472b 0px 12px 13px, #ec9c4717 0px -3px 5px; */
     box-shadow: #ec9c4740 0px 54px 55px, #ec9c471f 0px -12px 30px, #ec9c471f 0px 4px 6px, #ec9c472b 0px 12px 13px, #ec9c4717 0px -3px 5px;
 }
@@ -195,7 +196,88 @@ h4 {
     background-color: #0c1f36db;
     min-height: 70vh;
     width: 81%;
-    margin-top: 3%;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: #ec9c4740 0px 21px 55px, #ec9c471f 0px -12px 30px, #ec9c471f 0px 4px 6px, #ec9c472b 0px 12px 13px, #ec9c4717 0px -3px 5px;
+}
+
+#category{
+    margin-left: -11%;
+    width: 70%;
+    height: 7vh;
+    display: flex;
+    z-index: 999;
+}
+
+#category div{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #9f9d9d;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: 100;
+    margin-right: 0.55%;
+    background-color: #0c1f36db;
+    cursor: pointer;
+}
+
+#category div:hover{
+    color: #FFFFFF;
+    background-color: #24455adb;
+}
+
+#div_submit{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 8vh;
+    border-top-right-radius: 12px;
+    background-color: #24455abf;
+}
+
+#div_submit button{
+    margin: 0% 2% 0% 0%;
+    cursor: pointer;
+    transition: 0.5s;
+    color: #252525;
+    background-color: #ec9c47;
+    border: none;
     border-radius: 12px;
-    box-shadow: #ec9c4740 0px 54px 55px, #ec9c471f 0px -12px 30px, #ec9c471f 0px 4px 6px, #ec9c472b 0px 12px 13px, #ec9c4717 0px -3px 5px;
+    width: 12%;
+    height: 50%;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+#div_submit button:hover{
+    box-shadow: 0 4px 16px 0 #e6e5e53d, 0 4px 10px 0 #e6e5e53d;
+}
+
+#div_submit span{
+    color: white;
+    margin-left: 2%;
+}
+
+table{
+    min-height: auto;
+    width: 100%;
+    border-collapse: collapse;
+    color: whitesmoke;
+}
+
+td{
+    text-align: center;
+    background-color: #24455abf;
+}
+
+.td_main{
+    border-bottom: 2px solid white;
+    background-color: #16161691;
+    /* background-color: #0a0d3699; */
 }

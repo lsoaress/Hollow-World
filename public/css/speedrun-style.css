@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
 #logo {
     height: 84%;
     cursor: pointer;
-
+    margin-left: 3.5%;
 }
 
 #myvideo {
@@ -76,11 +76,6 @@ body::-webkit-scrollbar {
     justify-content: space-between;
     height: 100%;
     width: 95%;
-}
-
-.navbar_icons {
-    width: 100%;
-    height: auto;
 }
 
 #profile_pic {
@@ -114,7 +109,7 @@ body::-webkit-scrollbar {
 
 /* seção do conteudo do página */
 
-#sec_card_main {
+#inicio {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -228,7 +223,7 @@ h4 {
 
 #category div:hover{
     color: #FFFFFF;
-    background-color: #24455adb;
+    background-color: #24455abf;
 }
 
 #div_submit{

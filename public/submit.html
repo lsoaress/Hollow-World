@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/submit-style.css">
+    <script src="./js/submit.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <title>Enviar Vídeo</title>
+</head>
+
+<body>
+    <video muted loop autoplay id="myvideo">
+        <source src="./video/fundo_speed.mp4" type="video/mp4">
+    </video>
+
+    <header id="navbar">
+        <div id="container">
+            <img class="seta" src="./img/speedrun/seta_voltar.png" onclick="back_speed()">
+            <div id="logo" onclick="back_start()">
+                <span id="titulo_back">HOLLOW WORLD</span>
+                <img src="img/moldura.png" class="abaixo_titulo">
+            </div>
+            <div id="div_usuario">
+                <img src="img/personagens/cornifer-profile.jpg" id="profile_pic">
+                <span id="nome_usuario">Usuario </span>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <div id="submit">
+            <form id="form_video">
+                <input id="inp_link" placeholder="URL" onchange="change_link(), onYouTubeIframeAPIReady()">
+                <input id="inp_duracao" placeholder="Duração">
+                <select id="select_mode">
+                    <option value="">-</option>
+                    <option value="any%">Any%</option>
+                    <option value="122APB">112 APB</option>
+                    <option value="allskills">Todas Habilidades</option>
+                    <option value="true_ending">Final Verdadeiro</option>
+                    <option value="all_achiv">Todas as conquistas</option>
+                </select>
+                <button type="button">AAAAAAAAAAAAAAAA</button>
+                <iframe id="ytplayer" width="400" height="200" controls="0"
+                    src="https://www.youtube.com/embed/lZyQLv_-VeQ?enablejsapi=1" title="YouTube video player"
+                    frameborder="0"></iframe>
+
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
+
+<script> 
+
+    function teste() {
+
+    }
+
+    function onYouTubeIframeAPIReady() {
+        console.log('API ready')
+        var player = new YT.Player('ytplayer', {
+            events: {
+                onReady: function () {
+                    console.log('player ready')
+                    player.playVideo()
+                    console.log(player.getDuration())
+                    var duracao = player.getDuration();
+                    var string = '' + duracao / 60;
+                    var decimal = string - Number(string[0]);
+                    var total = decimal * 60;
+                    var res = ((string - decimal) + 'm ') + (total.toFixed() + 's');
+                    inp_duracao.value = res;
+
+                }
+            }
+        })
+    }
+
+</script>

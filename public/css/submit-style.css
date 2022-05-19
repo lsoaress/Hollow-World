@@ -171,3 +171,21 @@ select{
     border-radius: 8px;
     min-height: 24px;
 }
+
+button{
+    margin: 0% 2% 0% 0%;
+    cursor: pointer;
+    transition: 0.5s;
+    color: #252525;
+    background-color: #ec9c47;
+    border: none;
+    border-radius: 12px;
+    width: 45%;
+    height: 11%;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+button:hover{
+    box-shadow: 0 4px 16px 0 #e6e5e53d, 0 4px 10px 0 #e6e5e53d;
+}

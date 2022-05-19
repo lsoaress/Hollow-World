@@ -14,8 +14,8 @@ create table usuario(
 
 create table video(
 	idVideo int primary key auto_increment,
-    duracao double,
-    tipo varchar(),
+    duracao int,
+    tipo varchar(20),
     dataHora datetime default current_timestamp,
     link varchar(200) unique,
     fkUsuario int,

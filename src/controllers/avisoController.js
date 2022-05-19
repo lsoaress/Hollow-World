@@ -65,34 +65,6 @@ function pesquisarDescricao(req, res) {
         );
 }
 
-function publicar(req, res) {
-    var titulo = req.body.titulo;
-    var descricao = req.body.descricao;
-    var idUsuario = req.params.idUsuario;
-
-    if (titulo == undefined) {
-        res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
-        res.status(400).send("A descrição está indefinido!");
-    } else if (idUsuario == undefined) {
-        res.status(403).send("O id do usuário está indefinido!");
-    } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            )
-            .catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
-
 function editar(req, res) {
     var novaDescricao = req.body.descricao;
     var idAviso = req.params.idAviso;
@@ -131,12 +103,45 @@ function deletar(req, res) {
         );
 }
 
+// Minhas Configs
+
+function cadastrar_video(req, res) {
+    var link = req.body.linkServer;
+    var tipo = req.body.tipoServer;
+    var duracao = req.body.duracaoServer;
+    var idUsuario = req.params.idUsuario;
+
+    if (link == undefined) {
+        res.status(400).send("O título está indefinido!");
+    } else if (tipo == undefined) {
+        res.status(400).send("A descrição está indefinido!");
+    } else if (duracao == undefined) {
+        res.status(403).send("A duracao do vídeo está indefinido!");
+    }else if (idUsuario == undefined) {
+        res.status(403).send("O id do usuário está indefinido!");
+    } else {
+        avisoModel.cadastrar_video(link, tipo, duracao, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     testar,
     listar,
     listarPorUsuario,
     pesquisarDescricao,
-    publicar,
     editar,
-    deletar
+    deletar,
+    cadastrar_video
 }

@@ -9,3 +9,7 @@ function back_login(){
 function foward_sub(){
     window.location = 'submit.html'
 }
+
+function call_name(){
+    nome_usuario.innerHTML = sessionStorage.USERNAME;
+}

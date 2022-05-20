@@ -269,10 +269,16 @@ table{
 td{
     text-align: center;
     background-color: #24455abf;
+    width: 19%;
+}
+
+.td_hora{
+    width: 24%;
 }
 
 .td_main{
     border-bottom: 2px solid white;
+    text-align: center;
     background-color: #16161691;
     /* background-color: #0a0d3699; */
 }

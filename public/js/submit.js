@@ -116,8 +116,8 @@ function cadastrar_video() {
   }
 }
 
-function validar_sessao(){
+/* function validar_sessao(){
   if(sessionStorage.ID_USUARIO == null|| sessionStorage.USERNAME == null || sessionStorage.EMAIL_USUARIO == null || sessionStorage.NOME_USUARIO == null){
     window.location = 'speedrun.html'
   }
-}
+} */

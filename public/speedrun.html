@@ -11,7 +11,7 @@
     <script src="./js/speedrun.js"></script>
 </head>
 
-<body onload="call_name()">
+<body onload="call_name(), get_any()">
     <video muted loop autoplay id="myvideo">
         <source src="./video/fundo_speed.mp4" type="video/mp4">
     </video>
@@ -54,20 +54,13 @@
                     <span>Tente superar um recorde e torne-se o jogador de HK mais rápido!</span>
                     <button onclick="foward_sub()">Enviar video</button>
                 </div>
-                <table>
+                <table id="table_leader">
                     <tr>
                         <td class="td_main">P</td>
                         <td class="td_main">Usuário</td>
                         <td class="td_main">Tempo</td>
                         <td class="td_main">Data</td>
                         <td class="td_main">Video</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Vessel</td>
-                        <td>4 min</td>
-                        <td>12/12/2003</td>
-                        <td>link1</td>
                     </tr>
                 </table>
             </div>

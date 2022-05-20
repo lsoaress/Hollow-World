@@ -5,20 +5,6 @@ function testar(req, res) {
     res.send("ENTRAMOS NO AVISO CONTROLLER");
 }
 
-function listar(req, res) {
-    avisoModel.listar().then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
 function listarPorUsuario(req, res) {
     var idUsuario = req.params.idUsuario;
 
@@ -117,7 +103,7 @@ function cadastrar_video(req, res) {
         res.status(400).send("A descrição está indefinido!");
     } else if (duracao == undefined) {
         res.status(403).send("A duracao do vídeo está indefinido!");
-    }else if (idUsuario == undefined) {
+    } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
         avisoModel.cadastrar_video(link, tipo, duracao, idUsuario)
@@ -136,9 +122,23 @@ function cadastrar_video(req, res) {
     }
 }
 
+function get_any(req, res) {
+    avisoModel.get_any().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     testar,
-    listar,
+    get_any,
     listarPorUsuario,
     pesquisarDescricao,
     editar,

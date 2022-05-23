@@ -29,6 +29,14 @@ router.post("/cadastrar_video/:idUsuario", function (req, res) {
     avisoController.cadastrar_video(req, res);
 });
 
+router.post("/update_img/:idUsuario", function (req, res) {
+    avisoController.update_img(req, res);
+});
+
+router.post("/get_user", function (req, res) {
+    avisoController.get_user(req, res);
+});
+
 router.get("/get_any", function (req, res) {
     avisoController.get_any(req, res);
 });

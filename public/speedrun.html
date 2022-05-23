@@ -11,7 +11,7 @@
     <script src="./js/speedrun.js"></script>
 </head>
 
-<body onload="call_name(), get_any(), validar_login()">
+<body onload="get_user(), get_any(), call_image(), validar_login()">
     <video muted loop autoplay id="myvideo">
         <source src="./video/fundo_speed.mp4" type="video/mp4">
     </video>
@@ -24,11 +24,19 @@
                 <img src="img/moldura.png" class="abaixo_titulo">
             </div>
             <div id="div_usuario">
-                <img src="img/personagens/cornifer-profile.jpg" id="profile_pic">
+                <img src="" id="profile_pic">
                 <span id="nome_usuario"></span>
             </div>
         </div>
     </header>
+
+    <div id="sombra_main"></div>
+    <div id="select_img">
+        <h2>Selecione uma foto de perfil:</h2>
+        <div id="seletor"></div>
+        <input type="range" min="0" max="4" value="0" id="inp_valor" onchange="change_img()">
+        <button onclick="update_img()">Selecionar imagem</button>
+    </div>
 
     <section id="inicio">
         <div id="div_conteudo">

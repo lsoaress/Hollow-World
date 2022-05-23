@@ -573,6 +573,7 @@ function entrar() {
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.USERNAME = json.username;
+                    sessionStorage.PRIMEIRO_LOGIN = json.primeiro_login;
 
                     window.location = "speedrun.html";
 

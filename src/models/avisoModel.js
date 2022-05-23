@@ -72,6 +72,25 @@ function cadastrar_video(link, tipo, duracao, idUsuario) {
     return database.executar(instrucao);
 }
 
+function update_img(valor, idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function update_img(): ", valor, idUsuario);
+    var instrucao = `
+        UPDATE usuario SET primeiro_login = 'n',
+        fkPersonagem = '${valor}' where idUsuario = '${idUsuario}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function get_user(idUsuario) {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_user()");
+    var instrucao = `
+    select username, fkPersonagem from usuario where idUsuario = '${idUsuario}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function get_any() {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_any()");
     var instrucao = `
@@ -123,6 +142,8 @@ module.exports = {
     get_all,
     get_true,
     get_conq,
+    get_user,
+    update_img,
     listarPorUsuario,
     pesquisarDescricao,
     editar,

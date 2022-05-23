@@ -60,7 +60,7 @@ body::-webkit-scrollbar {
 
 #navbar {
     position: fixed;
-    height: 8vh;
+    height: 9vh;
     width: 100vw;
     background-color: #0c1f36ba;
     z-index: 99;

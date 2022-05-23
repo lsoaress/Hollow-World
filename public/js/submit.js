@@ -6,8 +6,42 @@ function back_start() {
   window.location = 'submit.html#inicio'
 }
 
-function call_name(){
-  nome_usuario.innerHTML = sessionStorage.USERNAME;
+var lista_imgs_perfil = ["../img/personagens/cornifer_profile.jpg", "../img/personagens/knight_profile.jpg", "../img/personagens/hornet_profile.png", "../img/personagens/shadow_profile.png", "../img/personagens/grim_profile.jfif"]
+
+
+function get_user() {
+  var id_usuario = sessionStorage.ID_USUARIO;
+
+  var corpo = {
+      id_usuario: id_usuario
+  }
+  fetch(`/avisos/get_user`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(corpo)
+  }).then(function (resultado) {
+
+      console.log("ESTOU NO THEN DO get_user()!")
+      if (resultado.ok) {
+          resultado.json().then(function (resultado) {
+              console.log("Dados recebidos do Perfil: ", JSON.stringify(resultado));
+
+              resultado[0]
+              console.log(resultado[0].username);
+              console.log(resultado[0].link);
+
+              nome_usuario.innerHTML = resultado[0].username;
+              profile_pic.src= lista_imgs_perfil[Number(resultado[0].fkPersonagem) - 1];
+
+          });
+      } else {
+          console.log("Dados recebidos: ", JSON.stringify(resultado));
+      }
+  }).catch(function (erro) {
+      console.log(erro);
+  })
 }
 
 function change_link() {
@@ -131,8 +165,8 @@ function cadastrar_video() {
   }
 }
 
-/* function validar_sessao(){
+function validar_sessao(){
   if(sessionStorage.ID_USUARIO == null|| sessionStorage.USERNAME == null || sessionStorage.EMAIL_USUARIO == null || sessionStorage.NOME_USUARIO == null){
     window.location = 'speedrun.html'
   }
-} */
+}

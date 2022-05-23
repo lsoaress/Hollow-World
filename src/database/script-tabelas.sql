@@ -9,7 +9,8 @@ create table usuario(
     cep char(8),
     estado char(2),
     senha varchar(100),
-    username varchar(20) unique
+    username varchar(20) unique,
+    primeiro_login char(1) default 's'
 );
 
 create table video(
@@ -18,6 +19,7 @@ create table video(
     tipo varchar(20),
     dataHora datetime default current_timestamp,
     link varchar(200) unique,
+    estado varchar(40) default 'pendente',
     fkUsuario int,
     foreign key (fkUsuario) references usuario(idUsuario)
 );

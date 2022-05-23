@@ -13,18 +13,101 @@ function foward_sub() {
     window.location = 'submit.html'
 }
 
-function call_name() {
-    nome_usuario.innerHTML = sessionStorage.USERNAME;
-}
-
 function validar_login() {
     if (sessionStorage.length == 0) {
+        select_img.style.display = 'none';
+        sombra_main.style.display = 'none';
         div_usuario.style.visibility = 'hidden'
     }
 }
 
+var lista_imgs = ["url(../img/personagens/cornifer_profile.jpg)", "url(../img/personagens/knight_profile.jpg)", "url(../img/personagens/hornet_profile.png)", "url(../img/personagens/shadow_profile.png)", "url(../img/personagens/grim_profile.jfif)"]
+
+var lista_imgs_perfil = ["../img/personagens/cornifer_profile.jpg", "../img/personagens/knight_profile.jpg", "../img/personagens/hornet_profile.png", "../img/personagens/shadow_profile.png", "../img/personagens/grim_profile.jfif"]
+
+function get_user() {
+    var id_usuario = sessionStorage.ID_USUARIO;
+
+    var corpo = {
+        id_usuario: id_usuario
+    }
+    fetch(`/avisos/get_user`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(corpo)
+    }).then(function (resultado) {
+
+        console.log("ESTOU NO THEN DO get_user()!")
+        if (resultado.ok) {
+            resultado.json().then(function (resultado) {
+                console.log("Dados recebidos do Perfil: ", JSON.stringify(resultado));
+
+                resultado[0]
+                console.log(resultado[0].username);
+                console.log(resultado[0].link);
+
+                nome_usuario.innerHTML = resultado[0].username;
+                profile_pic.src= lista_imgs_perfil[Number(resultado[0].fkPersonagem) - 1];
+
+            });
+        } else {
+            console.log("Dados recebidos: ", JSON.stringify(resultado));
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
+function call_image() {
+    if (sessionStorage.PRIMEIRO_LOGIN == 'n') {
+        div_usuario.style.visibility = 'visible'
+        select_img.style.display = 'none'
+        sombra_main.style.display = 'none'
+    }
+}
+
+function change_img() {
+    num = Number(inp_valor.value).toFixed();
+    seletor.style.backgroundImage = lista_imgs[num];
+    seletor.style.backgroundSize = 'cover'
+}
+
 
 // API
+
+function update_img() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var valor = Number(inp_valor.value);
+
+    fetch(`/avisos/update_img/${idUsuario}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            valorServer: valor + 1,
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            alert('Imagem escolhida com sucesso!')
+            window.location.reload();
+            sessionStorage.PRIMEIRO_LOGIN = 'n'
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
 
 var duracao = 0;
 

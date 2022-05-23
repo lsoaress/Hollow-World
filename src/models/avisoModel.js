@@ -75,7 +75,43 @@ function cadastrar_video(link, tipo, duracao, idUsuario) {
 function get_any() {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_any()");
     var instrucao = `
-        select username, duracao, datahora, link from usuario join video on idUsuario = fkUsuario;
+    select username, duracao, date_format(datahora, '%Y-%m-%d') as 'data', link from usuario join video on idUsuario = fkUsuario where tipo = 'any%' order by duracao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function get_apb() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_apb()");
+    var instrucao = `
+    select username, duracao, date_format(datahora, '%Y-%m-%d') as 'data', link from usuario join video on idUsuario = fkUsuario where tipo = '122APB' order by duracao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function get_all() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_all()");
+    var instrucao = `
+    select username, duracao, date_format(datahora, '%Y-%m-%d') as 'data', link from usuario join video on idUsuario = fkUsuario where tipo = 'allskills' order by duracao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function get_true() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_true()");
+    var instrucao = `
+    select username, duracao, date_format(datahora, '%Y-%m-%d') as 'data', link from usuario join video on idUsuario = fkUsuario where tipo = 'true_ending' order by duracao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function get_conq() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_conq()");
+    var instrucao = `
+    select username, duracao, date_format(datahora, '%Y-%m-%d') as 'data', link from usuario join video on idUsuario = fkUsuario where tipo = 'all_achiv' order by duracao;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -83,6 +119,10 @@ function get_any() {
 
 module.exports = {
     get_any,
+    get_apb,
+    get_all,
+    get_true,
+    get_conq,
     listarPorUsuario,
     pesquisarDescricao,
     editar,

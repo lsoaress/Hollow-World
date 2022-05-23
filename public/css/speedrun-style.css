@@ -221,9 +221,25 @@ h4 {
     cursor: pointer;
 }
 
-#category div:hover{
-    color: #FFFFFF;
-    background-color: #24455abf;
+#div_any:hover{
+    color: #FFFFFF !important; 
+    background-color: #24455abf !important;
+}
+#div_apb:hover{
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
+}
+#div_all:hover{
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
+}
+#div_conq:hover{
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
+}
+#div_true:hover{
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
 }
 
 #div_submit{

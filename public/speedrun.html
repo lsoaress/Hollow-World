@@ -11,7 +11,7 @@
     <script src="./js/speedrun.js"></script>
 </head>
 
-<body onload="call_name(), get_any()">
+<body onload="call_name(), get_any(), validar_login()">
     <video muted loop autoplay id="myvideo">
         <source src="./video/fundo_speed.mp4" type="video/mp4">
     </video>
@@ -43,11 +43,11 @@
                 </a>
             </div>
             <div id="category">
-                <div>ANY%</div>
-                <div>112% APB</div>
-                <div>Todas skills</div>
-                <div>Final Verdadeiro</div>
-                <div>Todas as conquistas</div>
+                <div id="div_any" onclick="get_any()">ANY%</div>
+                <div id="div_apb" onclick="get_apb()">112% APB</div>
+                <div id="div_all" onclick="get_all()">Todas skills</div>
+                <div id="div_true" onclick="get_true()">Final Verdadeiro</div>
+                <div id="div_conq" onclick="get_conq()">Todas as conquistas</div>
             </div>
             <div id="leaderboard">
                 <div id="div_submit">

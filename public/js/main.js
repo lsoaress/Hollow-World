@@ -532,6 +532,7 @@ function cadastrar() {
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
+        alert('Email / usuario já cadastrado')
     });
 
 }
@@ -588,11 +589,11 @@ function entrar() {
 
         }).catch(function (erro) {
             console.log(erro);
+            alert(erro)
         })
     }
 }
 
 function foward(){
     window.location = 'speedrun.html';
-    sessionStorage.ID_USUARIO = null;
 }

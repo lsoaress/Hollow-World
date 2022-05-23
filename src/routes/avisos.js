@@ -33,4 +33,20 @@ router.get("/get_any", function (req, res) {
     avisoController.get_any(req, res);
 });
 
+router.get("/get_apb", function (req, res) {
+    avisoController.get_apb(req, res);
+});
+
+router.get("/get_all", function (req, res) {
+    avisoController.get_all(req, res);
+});
+
+router.get("/get_true", function (req, res) {
+    avisoController.get_true(req, res);
+});
+
+router.get("/get_conq", function (req, res) {
+    avisoController.get_conq(req, res);
+});
+
 module.exports = router;

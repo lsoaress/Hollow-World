@@ -112,6 +112,7 @@ function cadastrar_video() {
       }
     }).catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
+      alert('Vídeo já cadastrado')
     });
   }
 }

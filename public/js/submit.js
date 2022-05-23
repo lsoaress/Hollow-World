@@ -12,12 +12,26 @@ function call_name(){
 
 function change_link() {
   var link = inp_link.value;
-  /* if(link.indexOf('embed') < 0){
+  var send = true;
+
+  if(link.indexOf('www.youtube.com/watch?v') < 0){
     alert('insira um formato de vídeo no formato embed, siga o tutorial abaixo')
-  } */
+    send = false;
+  }
+
+  else if(link.length > 43){
+    let trocar = '';
+    for(let c = 43; c < link.length; c++){
+      trocar += link[c]
+    }
+    link = link.replace(trocar, '')
+  }
+
+  if(send){
     link = link.replace('watch?v=', 'embed/')
     var link_certo = link + '?enablejsapi=1';
     ytplayer.src = link_certo;
+  }
 }
 
 function converter_min() {

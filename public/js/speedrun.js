@@ -19,6 +19,9 @@ function validar_login() {
         sombra_main.style.display = 'none';
         div_usuario.style.visibility = 'hidden'
     }
+    else{
+        call_image() 
+    }
 }
 
 var lista_imgs = ["url(../img/personagens/cornifer_profile.jpg)", "url(../img/personagens/knight_profile.jpg)", "url(../img/personagens/hornet_profile.png)", "url(../img/personagens/shadow_profile.png)", "url(../img/personagens/grim_profile.jfif)"]
@@ -46,7 +49,6 @@ function get_user() {
 
                 resultado[0]
                 console.log(resultado[0].username);
-                console.log(resultado[0].link);
 
                 nome_usuario.innerHTML = resultado[0].username;
                 profile_pic.src= lista_imgs_perfil[Number(resultado[0].fkPersonagem) - 1];
@@ -61,10 +63,10 @@ function get_user() {
 }
 
 function call_image() {
-    if (sessionStorage.PRIMEIRO_LOGIN == 'n') {
-        div_usuario.style.visibility = 'visible'
-        select_img.style.display = 'none'
-        sombra_main.style.display = 'none'
+    if (sessionStorage.PRIMEIRO_LOGIN == 's') {
+        div_usuario.style.visibility = 'hidden'
+        select_img.style.display = 'flex'
+        sombra_main.style.display = 'block'
     }
 }
 

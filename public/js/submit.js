@@ -6,6 +6,16 @@ function back_start() {
   window.location = 'submit.html#inicio'
 }
 
+function validar_sessao(){
+  if(sessionStorage.ID_USUARIO == null|| sessionStorage.USERNAME == null || sessionStorage.EMAIL_USUARIO == null || sessionStorage.NOME_USUARIO == null){
+    alert('Faça login para enviar um vídeo')
+    window.location = 'speedrun.html'
+  }
+  else{
+    get_user();
+  }
+}
+
 var lista_imgs_perfil = ["../img/personagens/cornifer_profile.jpg", "../img/personagens/knight_profile.jpg", "../img/personagens/hornet_profile.png", "../img/personagens/shadow_profile.png", "../img/personagens/grim_profile.jfif"]
 
 
@@ -162,11 +172,5 @@ function cadastrar_video() {
       console.log(`#ERRO: ${resposta}`);
       alert('Vídeo já cadastrado')
     });
-  }
-}
-
-function validar_sessao(){
-  if(sessionStorage.ID_USUARIO == null|| sessionStorage.USERNAME == null || sessionStorage.EMAIL_USUARIO == null || sessionStorage.NOME_USUARIO == null){
-    window.location = 'speedrun.html'
   }
 }

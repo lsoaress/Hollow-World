@@ -2,6 +2,11 @@ create database hollow_world;
 
 use hollow_world;
 
+create table personagem(
+	idPersonagem int primary key auto_increment,
+    nome varchar(40)
+);
+
 create table usuario(
 	idUsuario int primary key auto_increment,
     nome varchar(60),
@@ -10,7 +15,9 @@ create table usuario(
     estado char(2),
     senha varchar(100),
     username varchar(20) unique,
-    primeiro_login char(1) default 's'
+    primeiro_login char(1) default 's',
+    fkPersonagem int,
+    foreign key(fkPersonagem) references personagem(idPersonagem)
 );
 
 create table video(
@@ -23,3 +30,10 @@ create table video(
     fkUsuario int,
     foreign key (fkUsuario) references usuario(idUsuario)
 );
+
+insert into personagem(nome) values
+	('Cornifer'),
+    ('Knight'),
+    ('Hornet'),
+    ('Shadow'),
+    ('Grim');

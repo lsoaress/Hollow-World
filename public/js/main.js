@@ -498,7 +498,7 @@ function cadastrar() {
     var email = inp_cad_email.value;
     var estado = inp_cad_estado.value;
     var cep = inp_cad_cep.value;
-    var user = inp_cad_user.value;
+    var user = inp_cad_user.value.toLowerCase();
     var senha = inp_cad_senha.value;
 
     cep = cep.replace('-', '');
@@ -541,7 +541,7 @@ function cadastrar() {
 
 function entrar() {
 
-    var email_user = inp_log_user_email.value;
+    var email_user = inp_log_user_email.value.toLowerCase();
     var senha = inp_log_senha.value;
 
     if (email_user == "" || senha == "") {

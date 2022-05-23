@@ -15,7 +15,7 @@ function change_link() {
   var send = true;
 
   if(link.indexOf('www.youtube.com/watch?v') < 0){
-    alert('insira um formato de vídeo no formato embed, siga o tutorial abaixo')
+    alert('Por favor, insira vídeo do YouTube')
     send = false;
   }
 

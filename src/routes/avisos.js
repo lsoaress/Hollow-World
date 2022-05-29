@@ -3,26 +3,6 @@ var router = express.Router();
 
 var avisoController = require("../controllers/avisoController");
 
-router.get("/", function (req, res) {
-    avisoController.testar(req, res);
-});
-
-router.get("/listar/:idUsuario", function (req, res) {
-    avisoController.listarPorUsuario(req, res);
-});
-
-router.get("/pesquisar/:descricao", function (req, res) {
-    avisoController.pesquisarDescricao(req, res);
-});
-
-router.put("/editar/:idAviso", function (req, res) {
-    avisoController.editar(req, res);
-});
-
-router.delete("/deletar/:idAviso", function (req, res) {
-    avisoController.deletar(req, res);
-});
-
 // Minhas Configs
 
 router.post("/cadastrar_video/:idUsuario", function (req, res) {
@@ -35,6 +15,10 @@ router.post("/update_img/:idUsuario", function (req, res) {
 
 router.post("/get_user", function (req, res) {
     avisoController.get_user(req, res);
+});
+
+router.post("/get_vid", function (req, res) {
+    avisoController.get_vid(req, res);
 });
 
 router.get("/get_any", function (req, res) {
@@ -55,6 +39,10 @@ router.get("/get_true", function (req, res) {
 
 router.get("/get_conq", function (req, res) {
     avisoController.get_conq(req, res);
+});
+
+router.get("/get_graf_run", function (req, res) {
+    avisoController.get_graf_run(req, res);
 });
 
 module.exports = router;

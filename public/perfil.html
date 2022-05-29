@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/perfil.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/perfil.js"></script>
+    <title>Perfil</title>
+</head>
+
+<body onload="validar_login(), get_user(), get_vid(), get_graf_run()">
+    <video muted loop autoplay id="myvideo">
+        <source src="./video/fundo_speed.mp4" type="video/mp4">
+    </video>
+
+    <header id="navbar">
+        <div id="container">
+            <img class="seta" src="./img/speedrun/seta_voltar.png" onclick="back_speed()">
+            <div id="logo" onclick="back_start()">
+                <span id="titulo_back">HOLLOW WORLD</span>
+                <img src="img/moldura.png" class="abaixo_titulo">
+            </div>
+            <div id="div_usuario">
+                <img src="" id="profile_pic">
+                <span id="nome_usuario"></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <div id="div_conteudo">
+            <div id="div_perfil">
+                <img id="pic_grande" src="">
+                <div id="user_info">
+                    <div>
+                        Nome: <span id="span_nome"></span>
+                    </div>
+                    <div>
+                        Nickname: <span id="span_nick"></span>
+                    </div>
+                    <div>
+                        Email: <span id="span_email"></span>
+                    </div>
+                    <div>
+                        Estado: <span id="span_estado"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_grafics">
+            <div>
+                <h3>Tipos de run</h3>
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <div>
+                <h3 style="width: 113%; margin-left: -5%;">Personagens preferidos</h3>
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+
+        <div id="div_video">
+            <table id="table_leader">
+                <tr>
+                    <td class="td_main">Tipo</td>
+                    <td class="td_main">Tempo</td>
+                    <td class="td_main">Data</td>
+                    <td class="td_main">Video</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+<script>
+    
+   
+</script>

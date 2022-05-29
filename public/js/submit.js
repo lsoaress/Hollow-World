@@ -6,6 +6,10 @@ function back_start() {
   window.location = 'submit.html#inicio'
 }
 
+function go_perfil(){
+  window.location = 'perfil.html'
+}
+
 function validar_sessao(){
   if(sessionStorage.ID_USUARIO == null|| sessionStorage.USERNAME == null || sessionStorage.EMAIL_USUARIO == null || sessionStorage.NOME_USUARIO == null){
     alert('Faça login para enviar um vídeo')
@@ -109,6 +113,7 @@ function converter_min() {
   }
 
   inp_duracao.value = res;
+  inp_duracao.disabled = true;
 }
 
 var duracao = 0;

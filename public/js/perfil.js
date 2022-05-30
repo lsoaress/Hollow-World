@@ -201,6 +201,10 @@ function get_graf_run() {
     fetch("/avisos/get_graf_run").then(function (resposta) {
         if (resposta.ok) {
 
+            if (resposta.status == 204) {
+                div_run.style.display = 'none'
+            }
+
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 qtd_run1 = resposta[0].qtd;

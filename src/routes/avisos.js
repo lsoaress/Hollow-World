@@ -45,4 +45,8 @@ router.get("/get_graf_run", function (req, res) {
     avisoController.get_graf_run(req, res);
 });
 
+router.get("/get_graf_per", function (req, res) {
+    avisoController.get_graf_per(req, res);
+});
+
 module.exports = router;

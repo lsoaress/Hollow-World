@@ -93,6 +93,15 @@ function get_graf_run() {
     return database.executar(instrucao);
 }
 
+function get_graf_per() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function get_graf_per()");
+    var instrucao = `
+    select p.nome, count(u.idUsuario) as qtd from personagem as p join usuario as u on idPersonagem = fkPersonagem group by fkPersonagem;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     get_any,
     get_apb,
@@ -102,6 +111,7 @@ module.exports = {
     get_user,
     get_vid,
     get_graf_run,
+    get_graf_per,
     update_img,
     cadastrar_video
 }

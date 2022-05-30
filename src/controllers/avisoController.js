@@ -180,6 +180,20 @@ function get_graf_run(req, res) {
     });
 }
 
+function get_graf_per(req, res) {
+    avisoModel.get_graf_per().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     get_any,
     get_apb,
@@ -189,6 +203,7 @@ module.exports = {
     get_user,
     get_vid,
     get_graf_run,
+    get_graf_per,
     update_img,
     cadastrar_video
 }

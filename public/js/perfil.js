@@ -75,29 +75,7 @@ function get_vid() {
         if (resultado.ok) {
 
             if (resultado.status == 204) {
-                var tabela = document.getElementById('table_leader');
-                tabela.innerHTML = '';
-                var tr_tabela = document.createElement("tr");
-                var td_tipo = document.createElement("td");
-                var td_time = document.createElement("td");
-                var td_data = document.createElement("td");
-                var td_link = document.createElement("td");
-
-                tabela.appendChild(tr_tabela);
-                tr_tabela.appendChild(td_tipo);
-                tr_tabela.appendChild(td_time);
-                tr_tabela.appendChild(td_data);
-                tr_tabela.appendChild(td_link);
-
-                td_tipo.classList.add('td_last_rigth_top', 'td_main');
-                td_time.className = 'td_main';
-                td_data.className = 'td_main';
-                td_link.classList.add('td_last_left_top', 'td_main');
-
-                td_tipo.innerHTML = 'Tipo';
-                td_time.innerHTML = 'Tempo';
-                td_data.innerHTML = 'Data';
-                td_link.innerHTML = 'Link';
+                div_video.style.display = 'none'
             }
 
             resultado.json().then(function (resultado) {
@@ -218,8 +196,6 @@ nome_run3 = '';
 nome_run4 = '';
 nome_run5 = '';
 
-total = 0;
-
 function get_graf_run() {
 
     fetch("/avisos/get_graf_run").then(function (resposta) {
@@ -228,34 +204,82 @@ function get_graf_run() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 qtd_run1 = resposta[0].qtd;
-                total += qtd_run1;
                 nome_run1 = resposta[0].tipo;
-                
-                if(resposta[1]){
+
+                if (resposta[1]) {
                     qtd_run2 = resposta[1].qtd;
-                    total += qtd_run2;
                     nome_run2 = resposta[1].tipo;
                 }
-                if(resposta[2]){
+                if (resposta[2]) {
                     qtd_run3 = resposta[2].qtd;
-                    total += qtd_run3;
                     nome_run3 = resposta[2].tipo;
                 }
 
-                if(resposta[3]){
+                if (resposta[3]) {
                     qtd_run4 = resposta[3].qtd;
-                    total += qtd_run4;
                     nome_run4 = resposta[3].tipo;
                 }
 
-                if(resposta[4]){
+                if (resposta[4]) {
                     qtd_run5 = resposta[4].qtd;
-                    total += qtd_run5;
                     nome_run5 = resposta[4].tipo;
                 }
 
                 graf1();
-                
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+    });
+
+}
+
+qtd_per1 = 0;
+qtd_per2 = 0;
+qtd_per3 = 0;
+qtd_per4 = 0;
+qtd_per5 = 0;
+
+nome_per1 = '';
+nome_per2 = '';
+nome_per3 = '';
+nome_per4 = '';
+nome_per5 = '';
+
+function get_graf_per() {
+
+    fetch("/avisos/get_graf_per").then(function (resposta) {
+        if (resposta.ok) {
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                qtd_per1 = resposta[0].qtd;
+                nome_per1 = resposta[0].nome
+
+                if (resposta[1]) {
+                    qtd_per2 = resposta[1].qtd;
+                    nome_per2 = resposta[1].nome;
+                }
+                if (resposta[2]) {
+                    qtd_per3 = resposta[2].qtd;
+                    nome_per3 = resposta[2].nome;
+                }
+
+                if (resposta[3]) {
+                    qtd_per4 = resposta[3].qtd;
+                    nome_per4 = resposta[3].nome;
+                }
+
+                if (resposta[4]) {
+                    qtd_per5 = resposta[4].qtd;
+                    nome_per5 = resposta[4].nome;
+                }
+
+                graf2();
+
             });
         } else {
             throw ('Houve um erro na API!');
@@ -268,9 +292,7 @@ function get_graf_run() {
 
 function graf1() {
     const data = {
-        labels: [
-
-        ],
+        labels: [],
         datasets: [{
             data: [],
             backgroundColor: [
@@ -287,19 +309,19 @@ function graf1() {
     data.labels.push(nome_run1);
     data.datasets[0].data.push(qtd_run1);
 
-    if(qtd_run2 > 0){
+    if (qtd_run2 > 0) {
         data.labels.push(nome_run2);
         data.datasets[0].data.push(qtd_run2);
     }
-    if(qtd_run3 > 0){
+    if (qtd_run3 > 0) {
         data.labels.push(nome_run3);
         data.datasets[0].data.push(qtd_run3);
     }
-    if(qtd_run4 > 0){
+    if (qtd_run4 > 0) {
         data.labels.push(nome_run4);
         data.datasets[0].data.push(qtd_run4);
     }
-    if(qtd_run5 > 0){
+    if (qtd_run5 > 0) {
         data.labels.push(nome_run5);
         data.datasets[0].data.push(qtd_run5);
     }
@@ -316,25 +338,43 @@ function graf1() {
 
 }
 
-/* function graf2() {
+function graf2() {
 
     const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
+        labels: [],
         datasets: [{
             label: 'My First Dataset',
-            data: [300, 50, 100],
+            data: [],
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                '#AB4E68',
+                '#ec9c47',
+                '#0C1618',
+                '#32936F',
+                '#2274A5'
             ],
             hoverOffset: 4
         }]
     };
+
+    data.labels.push(nome_per1);
+    data.datasets[0].data.push(qtd_per1);
+
+    if (qtd_per2 > 0) {
+        data.labels.push(nome_per2);
+        data.datasets[0].data.push(qtd_per2);
+    }
+    if (qtd_per3 > 0) {
+        data.labels.push(nome_per3);
+        data.datasets[0].data.push(qtd_per3);
+    }
+    if (qtd_per4 > 0) {
+        data.labels.push(nome_per4);
+        data.datasets[0].data.push(qtd_per4);
+    }
+    if (qtd_per5 > 0) {
+        data.labels.push(nome_per5);
+        data.datasets[0].data.push(qtd_per5);
+    }
 
     const config = {
         type: 'pie',
@@ -345,11 +385,4 @@ function graf1() {
         document.getElementById('myChart2'),
         config
     );
-} */
-
-
-
-/* graf2(); */
-
-
-/* select tipo, count(idVideo) as qtd from video group by tipo union select count(tipo) ,count(idVideo)from video; */
+}

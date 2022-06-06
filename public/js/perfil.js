@@ -13,6 +13,53 @@ function validar_login() {
     }
 }
 
+function call_image() {
+    select_img.style.display = 'flex'
+    sombra_main.style.display = 'block'
+}
+
+
+function change_img() {
+    num = Number(inp_valor.value).toFixed();
+    seletor.style.backgroundImage = lista_imgs[num];
+    seletor.style.backgroundSize = 'cover'
+}
+
+function update_img() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var valor = Number(inp_valor.value);
+
+    fetch(`/avisos/update_img/${idUsuario}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            valorServer: valor + 1,
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            alert('Imagem alterada com sucesso!')
+            window.location.reload();
+            select_img.style.display = 'none'
+            sombra_main.style.display = 'none'
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+var lista_imgs = ["url(../img/personagens/cornifer_profile.jpg)", "url(../img/personagens/knight_profile.jpg)", "url(../img/personagens/hornet_profile.png)", "url(../img/personagens/shadow_profile.png)", "url(../img/personagens/grim_profile.jfif)"]
+
 var lista_imgs_perfil = ["../img/personagens/cornifer_profile.jpg", "../img/personagens/knight_profile.jpg", "../img/personagens/hornet_profile.png", "../img/personagens/shadow_profile.png", "../img/personagens/grim_profile.jfif"]
 
 function get_user() {
@@ -300,8 +347,8 @@ function graf1() {
         datasets: [{
             data: [],
             backgroundColor: [
-                '#AB4E68',
                 '#ec9c47',
+                '#AB4E68',
                 '#0C1618',
                 '#32936F',
                 '#2274A5'
@@ -350,8 +397,8 @@ function graf2() {
             label: 'My First Dataset',
             data: [],
             backgroundColor: [
-                '#AB4E68',
                 '#ec9c47',
+                '#AB4E68',
                 '#0C1618',
                 '#32936F',
                 '#2274A5'

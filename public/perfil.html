@@ -31,10 +31,21 @@
         </div>
     </header>
 
+    <div id="sombra_main"></div>
+    <div id="select_img">
+        <h2>Selecione uma foto de perfil:</h2>
+        <div id="seletor"></div>
+        <input type="range" min="0" max="4" value="0" id="inp_valor" onchange="change_img()">
+        <button onclick="update_img()">Selecionar imagem</button>
+    </div>
+
     <section id="inicio">
         <div id="div_conteudo">
             <div id="div_perfil">
-                <img id="pic_grande" src="">
+                <div id="div_foto">
+                    <img id="pic_grande" src="">
+                    <button onclick="call_image()">Trocar foto</button>
+                </div>
                 <div id="user_info">
                     <div>
                         Nome: <span id="span_nome"></span>

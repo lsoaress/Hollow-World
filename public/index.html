@@ -31,7 +31,7 @@
 
             <div id="container_login">
                 <form id="form_login">
-                    <span style="font-size: 1em">Bem vindo ao 'Projeto'!</span>
+                    <span style="font-size: 1em">Bem vindo ao Hollow World!</span>
                     <input id="inp_log_user_email" placeholder="Email / Username">
                     <input id="inp_log_senha" type="password" placeholder="Senha">
                     <button type="button" onclick="entrar()">Entrar</button>
@@ -71,15 +71,17 @@
                         <span id="caixa_estado_errado" class="msg_erro"></span>
                     </div>
                     <div>
-                        <input placeholder="Senha" id="inp_cad_senha" onkeyup="validar_senha(), validar_senhac()">
+                        <input type="password" placeholder="Senha" id="inp_cad_senha" onkeyup="validar_senha(), validar_senhac()">
                         <img src="img/certo.png" id="certo_senha">
                         <img src="img/errado.png" id="errado_senha">
                         <span id="caixa_senha_errado" class="msg_erro"></span>
+                        <img onclick="change_type(1)" id="olho1" src="img/icons/olho_fechado.png">
 
-                        <input placeholder="Confirme sua Senha" id="inp_confirmacao" onkeyup="validar_senhac()">
+                        <input type="password" placeholder="Confirme sua Senha" id="inp_confirmacao" onkeyup="validar_senhac()">
                         <img src="img/certo.png" id="certo_senhac">
                         <img src="img/errado.png" id="errado_senhac">
                         <span id="caixa_senhac_errado" class="msg_erro"></span>
+                        <img onclick="change_type(2)" id="olho2" src="img/icons/olho_fechado.png">
                     </div>
                     <input placeholder="Username" id="inp_cad_user" maxlength="20" onkeyup="validar_user()">
                     <img src="img/certo.png" id="certo_user">

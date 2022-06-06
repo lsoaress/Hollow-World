@@ -1,5 +1,28 @@
 // chamar a estilização da div do login
 
+function change_type(n) {
+    if (n == 1) {
+        if (inp_cad_senha.type == 'password') {
+            inp_cad_senha.type = 'text';
+            olho1.src = 'img/icons/olho_aberto.png'
+        }
+        else {
+            inp_cad_senha.type = 'password';
+            olho1.src = 'img/icons/olho_fechado.png'
+        }
+    }
+    else {
+        if (inp_confirmacao.type == 'password') {
+            inp_confirmacao.type = 'text';
+            olho2.src = 'img/icons/olho_aberto.png'
+        }
+        else {
+            inp_confirmacao.type = 'password';
+            olho2.src = 'img/icons/olho_fechado.png'
+        }
+    }
+}
+
 function call_login() {
 
     form_login.reset();
@@ -54,6 +77,13 @@ function reset_cad() {
     caixa_senha_errado.style.visibility = 'hidden';
     caixa_senhac_errado.style.visibility = 'hidden';
     caixa_user_errado.style.visibility = 'hidden';
+
+    olho1.style.opacity = 0;
+    olho2.style.opacity = 0;
+    inp_cad_senha.type = 'password';
+    olho1.src = 'img/icons/olho_fechado.png'
+    inp_confirmacao.type = 'password';
+    olho1.src = 'img/icons/olho_fechado.png'
 
     certo_nome.style.opacity = 0;
     certo_email.style.opacity = 0;
@@ -138,6 +168,11 @@ function call_cadastro() {
         divisao_cad.style.display = 'flex';
         container_cadastro.style.display = 'flex';
         sem_login.innerHTML = '<span class="span_call_cadastro">Obrigado por estar se juntando a nós!</span>';
+
+        setTimeout(function () {
+            olho1.style.opacity = 1;
+            olho2.style.opacity = 1;
+        },400)
 
     }, 500);
 }
@@ -596,6 +631,6 @@ function entrar() {
     }
 }
 
-function foward(){
+function foward() {
     window.location = 'speedrun.html';
 }

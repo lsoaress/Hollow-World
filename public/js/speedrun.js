@@ -6,6 +6,7 @@ function back_login() {
     sessionStorage.clear();
     setTimeout(function () {
         window.location = 'index.html'
+        alert('Volte Sempre!')
     }, 200)
 }
 

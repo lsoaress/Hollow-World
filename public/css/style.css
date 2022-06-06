@@ -288,3 +288,20 @@ input::placeholder {
     font-weight: bold;
     text-align: center;
 }
+
+#olho1{
+    position: absolute; 
+    height: 5%; 
+    transition: 1s; 
+    cursor: pointer;
+    opacity: 0;
+}
+
+#olho2{
+    position: absolute; 
+    height: 5%; 
+    transition: 1s; 
+    cursor: pointer; 
+    left: 78%; 
+    opacity: 0;
+}

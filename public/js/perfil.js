@@ -231,17 +231,8 @@ function get_vid() {
     })
 }
 
-qtd_run1 = 0;
-qtd_run2 = 0;
-qtd_run3 = 0;
-qtd_run4 = 0;
-qtd_run5 = 0;
-
-nome_run1 = '';
-nome_run2 = '';
-nome_run3 = '';
-nome_run4 = '';
-nome_run5 = '';
+var lista_qtdrun = [];
+var lista_nomerun = [];
 
 function get_graf_run() {
 
@@ -254,28 +245,12 @@ function get_graf_run() {
 
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
-                qtd_run1 = resposta[0].qtd;
-                nome_run1 = resposta[0].tipo;
 
-                if (resposta[1]) {
-                    qtd_run2 = resposta[1].qtd;
-                    nome_run2 = resposta[1].tipo;
+                for(let c = 0; c < resposta.length; c++){
+                    lista_qtdrun.push(resposta[c].qtd);
+                    lista_nomerun.push(resposta[c].tipo);
                 }
-                if (resposta[2]) {
-                    qtd_run3 = resposta[2].qtd;
-                    nome_run3 = resposta[2].tipo;
-                }
-
-                if (resposta[3]) {
-                    qtd_run4 = resposta[3].qtd;
-                    nome_run4 = resposta[3].tipo;
-                }
-
-                if (resposta[4]) {
-                    qtd_run5 = resposta[4].qtd;
-                    nome_run5 = resposta[4].tipo;
-                }
-
+    
                 graf1();
 
             });
@@ -288,17 +263,8 @@ function get_graf_run() {
 
 }
 
-qtd_per1 = 0;
-qtd_per2 = 0;
-qtd_per3 = 0;
-qtd_per4 = 0;
-qtd_per5 = 0;
-
-nome_per1 = '';
-nome_per2 = '';
-nome_per3 = '';
-nome_per4 = '';
-nome_per5 = '';
+var lista_nomeper = [];
+var lista_qtdper = [];
 
 function get_graf_per() {
 
@@ -307,26 +273,10 @@ function get_graf_per() {
 
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
-                qtd_per1 = resposta[0].qtd;
-                nome_per1 = resposta[0].nome
-
-                if (resposta[1]) {
-                    qtd_per2 = resposta[1].qtd;
-                    nome_per2 = resposta[1].nome;
-                }
-                if (resposta[2]) {
-                    qtd_per3 = resposta[2].qtd;
-                    nome_per3 = resposta[2].nome;
-                }
-
-                if (resposta[3]) {
-                    qtd_per4 = resposta[3].qtd;
-                    nome_per4 = resposta[3].nome;
-                }
-
-                if (resposta[4]) {
-                    qtd_per5 = resposta[4].qtd;
-                    nome_per5 = resposta[4].nome;
+                
+                for(let c = 0; c < resposta.length; c++){
+                    lista_nomeper.push(resposta[c].nome);
+                    lista_qtdper.push(resposta[c].qtd);
                 }
 
                 graf2();
@@ -357,24 +307,9 @@ function graf1() {
         }]
     };
 
-    data.labels.push(nome_run1);
-    data.datasets[0].data.push(qtd_run1);
-
-    if (qtd_run2 > 0) {
-        data.labels.push(nome_run2);
-        data.datasets[0].data.push(qtd_run2);
-    }
-    if (qtd_run3 > 0) {
-        data.labels.push(nome_run3);
-        data.datasets[0].data.push(qtd_run3);
-    }
-    if (qtd_run4 > 0) {
-        data.labels.push(nome_run4);
-        data.datasets[0].data.push(qtd_run4);
-    }
-    if (qtd_run5 > 0) {
-        data.labels.push(nome_run5);
-        data.datasets[0].data.push(qtd_run5);
+    for(let c = 0; c < lista_nomerun.length; c++){
+        data.labels.push(lista_nomerun[c]);
+        data.datasets[0].data.push(lista_qtdrun[c]);
     }
 
     const config = {
@@ -407,24 +342,9 @@ function graf2() {
         }]
     };
 
-    data.labels.push(nome_per1);
-    data.datasets[0].data.push(qtd_per1);
-
-    if (qtd_per2 > 0) {
-        data.labels.push(nome_per2);
-        data.datasets[0].data.push(qtd_per2);
-    }
-    if (qtd_per3 > 0) {
-        data.labels.push(nome_per3);
-        data.datasets[0].data.push(qtd_per3);
-    }
-    if (qtd_per4 > 0) {
-        data.labels.push(nome_per4);
-        data.datasets[0].data.push(qtd_per4);
-    }
-    if (qtd_per5 > 0) {
-        data.labels.push(nome_per5);
-        data.datasets[0].data.push(qtd_per5);
+    for(let c = 0; c < lista_nomeper.length; c++){
+        data.labels.push(lista_nomeper[c]);
+        data.datasets[0].data.push(lista_qtdper[c]);
     }
 
     const config = {

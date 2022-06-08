@@ -14,18 +14,18 @@ body {
 /* Config do scroll */
 
 body::-webkit-scrollbar {
-    width: 12px;               
-  }
-  
-  body::-webkit-scrollbar-track {
-    background: #0c1f36;        
-  }
-  
-  body::-webkit-scrollbar-thumb {
-    background-color: #ec9c47;    
-    border-radius: 20px;       
-    border: 3px solid #0c1f36;  
-  }
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #0c1f36;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #ec9c47;
+    border-radius: 20px;
+    border: 3px solid #0c1f36;
+}
 
 /* config navbar */
 
@@ -198,7 +198,7 @@ h4 {
     box-shadow: #ec9c4740 0px 21px 55px, #ec9c471f 0px -12px 30px, #ec9c471f 0px 4px 6px, #ec9c472b 0px 12px 13px, #ec9c4717 0px -3px 5px;
 }
 
-#category{
+#category {
     margin-left: -11%;
     width: 70%;
     height: 7vh;
@@ -206,7 +206,7 @@ h4 {
     z-index: 999;
 }
 
-#category div{
+#category div {
     width: 20%;
     height: 100%;
     display: flex;
@@ -222,28 +222,32 @@ h4 {
     cursor: pointer;
 }
 
-#div_any:hover{
-    color: #FFFFFF !important; 
-    background-color: #24455abf !important;
-}
-#div_apb:hover{
-    color: #FFFFFF !important;
-    background-color: #24455abf !important;
-}
-#div_all:hover{
-    color: #FFFFFF !important;
-    background-color: #24455abf !important;
-}
-#div_conq:hover{
-    color: #FFFFFF !important;
-    background-color: #24455abf !important;
-}
-#div_true:hover{
+#div_any:hover {
     color: #FFFFFF !important;
     background-color: #24455abf !important;
 }
 
-#div_submit{
+#div_apb:hover {
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
+}
+
+#div_all:hover {
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
+}
+
+#div_conq:hover {
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
+}
+
+#div_true:hover {
+    color: #FFFFFF !important;
+    background-color: #24455abf !important;
+}
+
+#div_submit {
     width: 100%;
     display: flex;
     align-items: center;
@@ -253,7 +257,7 @@ h4 {
     background-color: #24455abf;
 }
 
-#div_submit button{
+#div_submit button {
     margin: 0% 2% 0% 0%;
     cursor: pointer;
     transition: 0.5s;
@@ -267,33 +271,33 @@ h4 {
     font-weight: bold;
 }
 
-#div_submit button:hover{
+#div_submit button:hover {
     box-shadow: 0 4px 16px 0 #e6e5e53d, 0 4px 10px 0 #e6e5e53d;
 }
 
-#div_submit span{
+#div_submit span {
     color: white;
     margin-left: 2%;
 }
 
-table{
+table {
     min-height: auto;
     width: 100%;
     border-collapse: collapse;
     color: whitesmoke;
 }
 
-td{
+td {
     text-align: center;
     background-color: #24455abf;
     width: 19%;
 }
 
-.td_hora{
+.td_hora {
     width: 24%;
 }
 
-.td_main{
+.td_main {
     border-bottom: 2px solid white;
     text-align: center;
     background-color: #16161691;
@@ -302,7 +306,7 @@ td{
 
 /* Seleção de imagens */
 
-#select_img{
+#select_img {
     position: fixed;
     display: none;
     height: 80vh;
@@ -310,19 +314,19 @@ td{
     background-color: white;
     border-radius: 12px;
     z-index: 10000;
-    left: 25%;  
+    left: 25%;
     box-shadow: #ec9c4740 0px 21px 55px, #ec9c471f 0px -12px 30px, #ec9c471f 0px 4px 6px, #ec9c472b 0px 12px 13px, #ec9c4717 0px -3px 5px;
-    top: 10%;  
+    top: 10%;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
 }
 
-#select_img h2{
+#select_img h2 {
     height: 10%;
 }
 
-#sombra_main{
+#sombra_main {
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -331,7 +335,7 @@ td{
     background-color: #252525db;
 }
 
-#seletor{
+#seletor {
     border-radius: 50%;
     height: 28%;
     width: 25%;
@@ -340,7 +344,7 @@ td{
     background-size: cover;
 }
 
-#select_img button{
+#select_img button {
     margin: 0% 2% 0% 0%;
     cursor: pointer;
     transition: 0.5s;
@@ -354,7 +358,7 @@ td{
     font-weight: bold;
 }
 
-#select_img button:hover{
+#select_img button:hover {
     box-shadow: 0 4px 16px 0 #13121285, 0 4px 10px 0 #13121285;
 }
 
@@ -363,17 +367,222 @@ input[type=range] {
     width: 40%;
     border: solid 1px white;
     cursor: pointer;
- }
- input[type=range]::-webkit-slider-runnable-track {
+}
+
+input[type=range]::-webkit-slider-runnable-track {
     height: 3px;
     border-radius: 12px;
     background-color: #ec9c47;
- }
- input[type=range]::-webkit-slider-thumb {
+}
+
+input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 15px;
     width: 15px;
     border-radius: 50%;
     background: #252525;
     margin-top: -6px;
- }
+}
+
+/* Div dos comentários */
+
+#div_comentario {
+    position: fixed;
+    height: 6vh;
+    top: 92%;
+    left: 86%;
+    width: 25vh;
+    max-height: 60vh;
+    transition: 1s;
+}
+
+#div_conversa {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #252525;
+    font-weight: bold;
+    background-color: #ec9c47;
+    padding: 0.5%;
+    border-radius: 12px;
+    margin-bottom: 3%;
+    transition: 0.5s;
+    overflow-y: scroll;
+}
+
+#div_conversa:hover {
+    box-shadow: 0 4px 16px 0 #e6e5e53d, 0 4px 10px 0 #e6e5e53d;
+    transition: 0.5s;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 9vh;
+    border: 1px dashed #ececec;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.box:hover {
+    transition: 0.5s;
+    box-shadow: 0 4px 16px 0 #13121285, 0 4px 10px 0 #13121285;
+}
+
+.conversa_img {
+    width: 30%;
+    border-radius: 50%;
+}
+
+.fecha_conv {
+    position: absolute;
+    width: 13%;
+    top: -6%;
+    left: 89%;
+    cursor: pointer;
+}
+
+#div_conversa::-webkit-scrollbar {
+    width: 12px;
+}
+
+#div_conversa::-webkit-scrollbar-track {
+    background: #0c1f36;
+}
+
+#div_conversa::-webkit-scrollbar-thumb {
+    background-color: #ec9c47;
+    border-radius: 20px;
+    border: 3px solid #0c1f36;
+}
+
+#div_chat {
+    background-color: red;
+    height: 6vh;
+    width: 21%;
+    top: 93%;
+    border-radius: 12px;
+    left: 63%;
+    position: fixed;
+    color: #252525;
+    font-weight: bold;
+    background-color: #ec9c47;
+    border-radius: 12px;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+}
+
+#div_chat_conversa {
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+
+.div_destinatario {
+    height: 10%;
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #ececec;
+    border-bottom: 2px solid #252525;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    
+}
+
+.fechar_chat {
+    top: 2.5%;
+    left: 85%;
+    height: 5%;
+    cursor: pointer;
+    position: absolute;
+}
+
+.inp_chat {
+    width: 70%;
+    height: 13%;
+    resize: none;
+    margin-left: 1%;
+    background-color: #ececec;
+    border-radius: 12px;
+    color: #0b213a;
+    padding: 1%;
+    font-weight: bold;
+}
+
+.descricao {
+    height: 74%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_chat {
+    cursor: pointer;
+    transition: 0.5s;
+    color: #252525;
+    background-color: #ececec;
+    border: none;
+    border-radius: 12px;
+    width: 18%;
+    height: 10%;
+    font-size: 0.85em;
+    font-weight: bold;
+    position: absolute;
+    top: 87%;
+    left: 77%;
+}
+
+.div_desc{
+    word-break: break-all;
+    display: flex;
+    max-width: 87%;
+    padding: 1%;
+    border-radius: 15px;
+    margin: 1%;
+    align-self: flex-start;
+    color: #ececec;
+    background-color: #0b213a;
+}
+
+.btn_chat:hover {
+    box-shadow: 0 4px 16px 0 #13121285, 0 4px 10px 0 #13121285;
+}
+
+.descricao::-webkit-scrollbar {
+    width: 12px;
+}
+
+.descricao::-webkit-scrollbar-track {
+    background: #0c1f36;
+}
+
+.descricao::-webkit-scrollbar-thumb {
+    background-color: #ec9c47;
+    border-radius: 20px;
+    border: 3px solid #0c1f36;
+}
+
+.inp_chat::-webkit-scrollbar {
+    width: 12px;
+}
+
+.inp_chat::-webkit-scrollbar-track {
+    background: #0c1f36;
+}
+
+.inp_chat::-webkit-scrollbar-thumb {
+    background-color: #ec9c47;
+    border-radius: 20px;
+    border: 3px solid #0c1f36;
+}

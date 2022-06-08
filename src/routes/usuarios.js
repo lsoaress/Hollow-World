@@ -20,4 +20,11 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.get("/abrir_chat/:idUsuario&:fkResposta", function (req, res) {
+    usuarioController.abrir_chat(req, res);
+});
+
+router.post("/enviar_msg", function (req, res) {
+    usuarioController.enviar_msg(req, res);
+});
 module.exports = router;

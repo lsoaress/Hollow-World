@@ -26,10 +26,30 @@ create table video(
     tipo varchar(20),
     dataHora datetime default current_timestamp,
     link varchar(200) unique,
-    estado varchar(40) default 'pendente',
     fkUsuario int,
     foreign key (fkUsuario) references usuario(idUsuario)
 );
+
+create table comentario(
+	idComentario int primary key auto_increment,
+    descricao varchar(200),
+    fkUsuario1 int,
+    fkUsuario2 int,
+    fkResposta int,
+    foreign key (fkUsuario1) references usuario(idUsuario),
+    foreign key (fkUsuario2) references usuario(idUsuario),
+    foreign key (fkResposta) references comentario(idComentario),
+    dataHora datetime default current_timestamp
+);
+
+insert into comentario(descricao, fkUsuario1, fkUsuario2) values
+
+('aa',2,1),
+('aa',2,1),
+('aa',2,3),
+('aa',2,4);
+
+select descricao, fkUsuario1, fkUsuario2 from comentario join usuario on fkUsuario1 = idUsuario where (fkUsuario1 = 1 and fkUsuario2 = 2) or (fkUsuario1 = 2 and fkUsuario2 = 1);
 
 insert into personagem(nome) values
 	('Cornifer'),
@@ -37,3 +57,5 @@ insert into personagem(nome) values
     ('Hornet'),
     ('Shadow'),
     ('Grim');
+    
+select * from usuario;

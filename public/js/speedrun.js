@@ -20,12 +20,12 @@ function validar_login() {
         sombra_main.style.display = 'none';
         div_usuario.style.visibility = 'hidden'
     }
-    else{
-        call_image() 
+    else {
+        call_image()
     }
 }
 
-function go_perfil(){
+function go_perfil() {
     window.location = 'perfil.html'
 }
 
@@ -56,7 +56,7 @@ function get_user() {
                 console.log(resultado[0].username);
 
                 nome_usuario.innerHTML = resultado[0].username;
-                profile_pic.src= lista_imgs_perfil[Number(resultado[0].fkPersonagem) - 1];
+                profile_pic.src = lista_imgs_perfil[Number(resultado[0].fkPersonagem) - 1];
 
             });
         } else {
@@ -901,5 +901,189 @@ function get_conq() {
         }
     }).catch(function (resposta) {
         console.error(resposta);
+    });
+}
+
+function open_user() {
+
+    div_comentario.style.height = '60vh';
+    div_comentario.style.top = '38vh';
+
+    div_conversa.style.flexDirection = 'column';
+    div_conversa.style.justifyContent = 'space-evenly';
+    div_conversa.style.paddingTop = '6.5%';
+
+    div_conversa.style.display = 'grid';
+    div_conversa.style.gridGap = '1rem';
+    div_conversa.style.gridTemplateColumns = '1fr';
+
+    fetch("/usuarios/listar").then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                var conversa = document.getElementById("div_conversa");
+                var close = document.createElement("img");
+                conversa.innerHTML = "";
+                conversa.appendChild(close)
+                close.src = 'img/errado.png'
+                close.className = 'fecha_conv'
+                close.setAttribute('onclick', 'fechar_usuario()')
+
+                for (let i = 0; i < resposta.length; i++) {
+                    var perfil = resposta[i];
+                    if (perfil.idUsuario == sessionStorage.ID_USUARIO) {
+                        i++
+                        perfil = resposta[i];
+                        if (i == resposta.length) {
+                            return false
+                        }
+                    }
+                    // criando e manipulando elementos do HTML via JavaScript
+                    var box = document.createElement("div");
+                    var usuario = document.createElement("div");
+                    var img = document.createElement("img");
+
+                    box.className = 'box';
+                    img.className = 'conversa_img';
+                    usuario.className = 'div_c_usuario';
+
+                    conversa.appendChild(box);
+                    box.appendChild(img);
+                    box.appendChild(usuario);
+
+                    box.setAttribute('onclick', `abrir_chat(${perfil.idUsuario}, '${perfil.username}')`)
+
+                    img.src = lista_imgs_perfil[perfil.fkPersonagem - 1];
+                    usuario.innerHTML = perfil.username
+
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+    });
+
+}
+
+function fechar_usuario() {
+    div_comentario.style.height = '6vh';
+    div_comentario.style.top = '92%';
+
+    div_conversa.innerHTML = '<span style="cursor: pointer;" onclick="open_user()">Conversar</span>';
+    div_conversa.style.flexDirection = 'row';
+    div_conversa.style.justifyContent = 'center';
+    div_conversa.style.paddingTop = '0';
+    div_conversa.style.display = 'flex';
+}
+
+function abrir_chat(fkResposta, destinatario) {
+
+    div_chat.style.opacity = 1;
+    div_chat.style.visibility = 'visible';
+    div_chat.style.height = '58vh';
+    div_chat.style.width = '21%';
+    div_chat.style.left = '63%';
+    div_chat.style.top = '40%';
+    var idUsuario = sessionStorage.ID_USUARIO;
+    div_chat_conversa.innerHTML = '';
+    
+    var chat = document.getElementById('div_chat_conversa');
+    var div_destinatario = document.createElement('div');
+    chat.appendChild(div_destinatario);
+    div_destinatario.className = 'div_destinatario';
+    div_destinatario.innerHTML = `<span>${destinatario}</span>`;
+    var close = document.createElement("img");
+    div_destinatario.appendChild(close);
+    close.src = 'img/fechar.png';
+    close.className = 'fechar_chat';
+    close.setAttribute('onclick', 'fechar_chat()');
+    
+    var descricao = document.createElement('div');
+    chat.appendChild(descricao);
+    descricao.className = 'descricao';
+    
+
+    var inp = document.createElement('textarea');
+    chat.appendChild(inp);
+    inp.className = 'inp_chat';
+    inp.id = 'inp_chat';
+
+    var btn = document.createElement('button');
+    chat.appendChild(btn);
+    btn.className = 'btn_chat';
+    btn.innerHTML = 'Enviar';
+    btn.setAttribute('onclick', `enviar_msg(${fkResposta}, '${destinatario}')`)
+
+    fetch(`/usuarios/abrir_chat/${fkResposta}&${idUsuario}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                for(let c = 0; c < resposta.length; c++){   
+                    var chat = resposta[c];
+                    var div_desc = document.createElement('div');
+                    descricao.appendChild(div_desc);
+                    div_desc.className = 'div_desc'
+                    if(chat.fkUsuario1 == idUsuario){
+                        div_desc.style.alignSelf = 'flex-end';
+                        div_desc.style.justifyContent = 'flex-end';
+                    }
+                    div_desc.innerHTML = chat.descricao;
+                }
+
+                descricao.scrollBy(0, window.innerHeight);
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+    });
+};
+
+
+function fechar_chat(){
+    div_chat.style.height = '6vh';
+    div_chat.style.width = '21%';
+    div_chat.style.left = '63%';
+    div_chat.style.top = '93%';
+    div_chat.style.opacity = 0;
+    div_chat.style.visibility = 'hidden';
+}
+
+function enviar_msg(fkUsuario2, destinatario){
+    var fkUsuario1 = sessionStorage.ID_USUARIO;
+    var descricao = inp_chat.value
+
+    fetch(`/usuarios/enviar_msg`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            fkUsuario1Server: fkUsuario1,
+            fkUsuario2Server: fkUsuario2,
+            descricaoServer: descricao,
+
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            abrir_chat(fkUsuario2, destinatario);
+            btn_chat.value = ''
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
     });
 }

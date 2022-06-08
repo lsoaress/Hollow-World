@@ -31,8 +31,36 @@ function cadastrar(nome, email, estado, cep, user, senha) {
     return database.executar(instrucao);
 }
 
+function abrir_chat(idUsuario, fkResposta) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", idUsuario, fkResposta);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+    select descricao, fkUsuario1, fkUsuario2 from comentario join usuario on fkUsuario1 = idUsuario where (fkUsuario1 = ${idUsuario} and fkUsuario2 = ${fkResposta}) or (fkUsuario1 = ${fkResposta} and fkUsuario2 = ${idUsuario}) order by dataHora;
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function enviar_msg(fkUsuario1, fkUsuario2, descricao) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", fkUsuario1, fkUsuario2);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        insert into comentario(fkUsuario1, fkUsuario2, descricao) values ('${fkUsuario1}', '${fkUsuario2}', '${descricao}')
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    abrir_chat,
+    enviar_msg
 };

@@ -102,9 +102,63 @@ function cadastrar(req, res) {
     }
 }
 
+function abrir_chat(req, res) {
+    var idUsuario = req.params.idUsuario;
+    var fkResposta = req.params.fkResposta;
+
+    usuarioModel.abrir_chat(idUsuario, fkResposta)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+function enviar_msg(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fkUsuario1 = req.body.fkUsuario1Server;
+    var fkUsuario2 = req.body.fkUsuario2Server;
+    var descricao = req.body.descricaoServer;
+
+    // Faça as validações dos valores
+    if (fkUsuario1 == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else if (fkUsuario2 == undefined) {
+        res.status(400).send("o id do destinatario está undefined!");
+    } else {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.enviar_msg(fkUsuario1, fkUsuario2, descricao)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    abrir_chat,
+    enviar_msg
 }

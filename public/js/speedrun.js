@@ -1058,6 +1058,10 @@ function enviar_msg(fkUsuario2, destinatario){
     var fkUsuario1 = sessionStorage.ID_USUARIO;
     var descricao = inp_chat.value
 
+    if(descricao.trim() == ''){
+        return false
+    }
+
     fetch(`/usuarios/enviar_msg`, {
         method: "POST",
         headers: {

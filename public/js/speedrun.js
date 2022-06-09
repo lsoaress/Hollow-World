@@ -19,6 +19,7 @@ function validar_login() {
         select_img.style.display = 'none';
         sombra_main.style.display = 'none';
         div_usuario.style.visibility = 'hidden'
+        div_comentario.style.display = 'none'
     }
     else {
         call_image()
